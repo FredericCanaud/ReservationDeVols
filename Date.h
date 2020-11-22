@@ -10,13 +10,15 @@ class Date {
 public:
     Date();
     Date(int, int, int, int, int);
-
+    Date saisirDate();
 private:
     int heure;
     int minute;
     int jour;
     int mois;
     int annee;
+
+    static bool controlerDate(int jour, int moisSaisi, int annee);
 };
 
 

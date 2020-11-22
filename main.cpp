@@ -14,7 +14,7 @@ int main()
     switch (choix) {
         case 1:{
             Passager p = Passager::inscription();
-            int choix2 = Interface::menuPassager();
+            choix2 = Interface::menuPassager();
             switch (choix2)
             {
                 case 1:

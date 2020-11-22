@@ -14,12 +14,27 @@ Vol::Vol(int numero, int nombrePlacesMaximal, float prix) {
     this->prix = prix;
 }
 
-void Vol::ajouterVol(int numero, int nombrePlacesMaximal, float prix) {
-
+Vol Vol::ajouterVol(int numero, int nombrePlacesMaximal, float prix) {
+    Vol vol = Vol(numero, nombrePlacesMaximal, prix);
+    vol.destination = destination.saisirDestination();
+    vol.date = date.saisirDate();
+    return vol;
 }
 
-bool Vol::recherche(const vector<Vol> &vols) {
-    return false;
+int Vol::recherche(const vector<Vol> &vols) {
+
+    for(Vol vol : vols)
+    {
+        int i = 0;
+        if(vol.numero == numero)
+        {
+            trouve=true;
+        }
+        else
+            i++;
+    }
+    return trouve;
 }
+
 
 

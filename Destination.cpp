@@ -22,11 +22,12 @@ string Destination::getVilleArrivee(){
     return villeArrivee;
 }
 
-void Destination::saisirDestination(){
+Destination Destination::saisirDestination(){
     cout << "Entrez la ville de depart :";
     cin >> villeDepart;
     cout << "Entrez la ville d'arrivée :";
     cin >> villeArrivee;
+    return Destination(villeDepart,villeArrivee);
 }
 
 void Destination::afficher(){

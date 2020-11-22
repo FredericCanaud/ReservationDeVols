@@ -15,7 +15,7 @@ public:
     string getVilleDepart();
     string getVilleArrivee();
     void afficher();
-    void saisirDestination();
+    Destination saisirDestination();
 
 private:
     string villeDepart;
