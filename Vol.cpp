@@ -21,8 +21,8 @@ Vol Vol::ajouterVol(int numero, int nombrePlacesMaximal, float prix) {
     return vol;
 }
 
-int Vol::recherche(const vector<Vol> &vols) {
-
+bool Vol::recherche(const vector<Vol> &vols) const {
+    bool trouve;
     for(Vol vol : vols)
     {
         int i = 0;

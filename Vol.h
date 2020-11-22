@@ -15,7 +15,7 @@ class Vol {
 public:
     Vol();
     Vol(int numero, int nombrePlacesMaximal, float prix);
-    bool recherche(const vector<Vol> &vols);
+    bool recherche(const vector<Vol> &vols) const;
     Vol ajouterVol(int numero, int nombrePlacesMaximal, float prix);
 
 private:
