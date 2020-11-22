@@ -12,6 +12,10 @@ class Destination {
 public:
     Destination();
     Destination(string,string);
+    string getVilleDepart();
+    string getVilleArrivee();
+    void afficher();
+    void saisirDestination();
 
 private:
     string villeDepart;

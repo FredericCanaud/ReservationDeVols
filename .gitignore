@@ -28,3 +28,17 @@ CMakeLists.txt
 .idea/ReservationDeVols.iml
 .idea/modules.xml
 .idea/misc.xml
+cmake-build-debug/CMakeFiles/ReservationDeVols.dir/Administrateur.cpp.obj
+cmake-build-debug/CMakeFiles/ReservationDeVols.dir/CXX.includecache
+cmake-build-debug/CMakeFiles/ReservationDeVols.dir/Date.cpp.obj
+cmake-build-debug/CMakeFiles/ReservationDeVols.dir/depend.internal
+cmake-build-debug/CMakeFiles/ReservationDeVols.dir/Destination.cpp.obj
+cmake-build-debug/CMakeFiles/ReservationDeVols.dir/main.cpp.obj
+cmake-build-debug/CMakeFiles/ReservationDeVols.dir/Interface.cpp.obj
+cmake-build-debug/CMakeFiles/ReservationDeVols.dir/objects.a
+cmake-build-debug/CMakeFiles/ReservationDeVols.dir/Passager.cpp.obj
+cmake-build-debug/CMakeFiles/ReservationDeVols.dir/Vol.cpp.obj
+cmake-build-debug/CMakeFiles/ReservationDeVols.dir/Reservation.cpp.obj
+cmake-build-debug/CMakeFiles/ReservationDeVols.dir/Personne.cpp.obj
+cmake-build-debug/ReservationDeVols.exe
+.idea/inspectionProfiles/Project_Default.xml

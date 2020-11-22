@@ -4,11 +4,10 @@
 
 #include "Administrateur.h"
 
-Administrateur::Administrateur() {
+Administrateur::Administrateur() : Personne() {
 
 }
 
-Administrateur::Administrateur(string identifiant, string motDePasse) {
-    this->identifiant = identifiant;
-    this->motDePasse = motDePasse;
+Administrateur::Administrateur(string identifiant, string motDePasse) : Personne(identifiant, motDePasse){
+
 }

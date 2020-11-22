@@ -4,18 +4,14 @@
 
 #ifndef RESERVATIONDEVOLS_ADMINISTRATEUR_H
 #define RESERVATIONDEVOLS_ADMINISTRATEUR_H
-
+#include "Personne.h"
 #include <string>
 using namespace std;
 
-class Administrateur {
+class Administrateur : virtual Personne{
 public:
     Administrateur();
     Administrateur(string, string);
-
-private:
-    string identifiant;
-    string motDePasse;
 };
 
 

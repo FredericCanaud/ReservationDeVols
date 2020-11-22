@@ -6,15 +6,26 @@
 #define RESERVATIONDEVOLS_VOL_H
 
 
+#include "Destination.h"
+#include "Passager.h"
+#include "Date.h"
+#include <vector>
+
 class Vol {
 public:
     Vol();
-    Vol(int numero, int nombrePlacesMaximal, int prix);
+    Vol(int numero, int nombrePlacesMaximal, float prix);
+    bool recherche(const vector<Vol> &vols);
+    void ajouterVol(int numero, int nombrePlacesMaximal, float prix);
 
 private:
-    int numero{};
-    int nombrePlacesMaximal{};
-    int prix{};
+    int numero;
+    int nombrePlacesMaximal;
+    float prix;
+    Destination destination;
+    Date date;
+    vector<Passager> passagers;
+
 };
 
 
