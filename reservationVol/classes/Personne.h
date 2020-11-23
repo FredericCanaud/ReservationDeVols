@@ -18,6 +18,13 @@ public:
     const string &getIdentifiant() const;
     const string &getMotDePasse() const;
 
+    string getIdentifiant(){
+    	return this->identifiant;
+    }
+    string getMdp(){
+    	return this->motDePasse;
+    }
+
 private:
     string identifiant;
     string motDePasse;

@@ -6,7 +6,8 @@
 #include <map>
 #include "Passager.h"
 #include "helper.h"
-
+#include "manipulateurFichier.h"
+using namespace std;
 
 Passager::Passager() : Personne() {
 
@@ -100,7 +101,7 @@ Passager Passager::inscription() {
 
 
 
-
+// connection
 Passager Passager::connexion(const vector<Passager>& passagers) {
     bool correct = false;
     Passager p;
@@ -127,3 +128,62 @@ Passager Passager::connexion(const vector<Passager>& passagers) {
     }
     return p;
 }
+
+
+
+
+// ========== SAUVEGARDE =============
+
+//string qui contient les informations à sauvegarder
+string Passager::toSave(){
+	string result = "";
+	string s = ";"; //séparateur
+
+	result += this->getIdentifiant() + s + this->getMdp() + s + this->getNom() + s + this->getPrenom() + s + to_string(this->getAge()) + s + this->titreString() + s + to_string(this->getNumeroPasseport());
+
+	return result;
+}
+
+void Passager::save(list<Passager> passagers, string nomFichier){
+	ManipulateurFichier manip(nomFichier);
+	list<string> toSave;
+	list<Passager>::iterator it;
+
+	for (it = passagers.begin() ; it != passagers.end() ; it++){
+		toSave.push_back(it->toSave()) ;
+	}
+
+	manip.ecrire(toSave);
+
+}
+
+list<Passager> Passager::load(string nomfichier){
+	return list<Passager>();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

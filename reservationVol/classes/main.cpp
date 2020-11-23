@@ -1,4 +1,5 @@
 #include <iostream>
+#include<list>
 #include "Passager.h"
 #include "Interface.h"
 #include "Vol.h"
@@ -10,13 +11,16 @@ int main()
     int choix, choix2;
     vector<Vol> vols;
 
+    list<Passager> passagers;
+
     cout << " Programme Reservation de vols" << endl << endl;
 
     do{
-        choix = Interface::menuPrincipal();
+        choix = Interface::menuPrincipal(); //renvoie vers le menu principal
         switch (choix) {
             case 1: {
-                Passager p = Passager::inscription();
+                Passager p = Passager::inscription(); //renvoie vers la page pour l'inscription
+                passagers.push_back(p);
                 do {
                     choix2 = Interface::menuPassager();
                     switch (choix2) {
@@ -47,11 +51,12 @@ int main()
                 break;
             }
             case 2: {
-                system("CLS");
+                system("cls");
                 break;
             }
             case 3: {
-                system("CLS");
+            	cout << "boubye";
+                system("cls");
                 break;
             }
             default: {
@@ -60,4 +65,7 @@ int main()
             }
         }
     } while(choix != 3);
+
+    // sauvegarde à la fin du programme
+    Passager::save(passagers, "./sauvegarde/passagers.txt");
 }
