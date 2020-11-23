@@ -47,3 +47,5 @@ reservationVol/.setings/
 reservationVol/Debug/
 reservationVol/.cproject
 reservationVol/.projet
+*.obj
+
