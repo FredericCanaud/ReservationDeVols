@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Passager.h"
 #include "Interface.h"
+#include "helper.h"
 using namespace std;
 
 int main()

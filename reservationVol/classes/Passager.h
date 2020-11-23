@@ -11,7 +11,14 @@ using namespace std;
 
 enum class Titre { Monsieur, Madame, Mademoiselle};
 
-class Passager : virtual Personne{
+class Passager : Personne{
+private:
+    string nom;
+    string prenom;
+    int age;
+    Titre titre;
+    int numeroPasseport;
+
 public:
     Passager();
     Passager(string,string,string,string,int, Titre, int);
@@ -20,13 +27,6 @@ public:
     void annulerReservation();
 
     static Passager inscription();
-
-private:
-    string nom;
-    string prenom;
-    int age;
-    Titre titre;
-    int numeroPasseport;
 };
 
 
