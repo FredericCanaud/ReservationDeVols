@@ -11,6 +11,17 @@ public:
     Date();
     Date(int, int, int, int, int);
     Date saisirDate();
+
+    int getHeure() const;
+
+    int getMinute() const;
+
+    int getJour() const;
+
+    int getMois() const;
+
+    int getAnnee() const;
+
 private:
     int heure;
     int minute;

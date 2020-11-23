@@ -7,6 +7,8 @@
 
 #include "Personne.h"
 #include <string>
+#include <vector>
+
 using namespace std;
 
 enum class Titre { Monsieur, Madame, Mademoiselle};
@@ -20,13 +22,14 @@ public:
     void annulerReservation();
 
     static Passager inscription();
+    static Passager connexion(const vector<Passager> &passagers);
 
 private:
     string nom;
     string prenom;
-    int age;
+    int age{};
     Titre titre;
-    int numeroPasseport;
+    int numeroPasseport{};
 };
 
 

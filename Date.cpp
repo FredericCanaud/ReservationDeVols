@@ -18,6 +18,26 @@ Date::Date(int minute, int heure, int jour, int mois, int annee) {
     this->annee = annee;
 }
 
+int Date::getHeure() const {
+    return heure;
+}
+
+int Date::getMinute() const {
+    return minute;
+}
+
+int Date::getJour() const {
+    return jour;
+}
+
+int Date::getMois() const {
+    return mois;
+}
+
+int Date::getAnnee() const {
+    return annee;
+}
+
 Date Date::saisirDate() {
     int jourSaisi, moisSaisi, anneeSaisie, heureSaisie, minuteSaisie;
     cout<< " Entrez le jour du vol : " << endl;

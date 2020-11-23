@@ -12,8 +12,8 @@ class Destination {
 public:
     Destination();
     Destination(string,string);
-    string getVilleDepart();
-    string getVilleArrivee();
+    string getVilleDepart() const;
+    string getVilleArrivee() const;
     void afficher();
     Destination saisirDestination();
 

@@ -4,13 +4,18 @@
 
 #include "Personne.h"
 
-Personne::Personne() {
-
-}
+Personne::Personne() = default;
 
 Personne::Personne(string identifiant, string motDePasse) {
     this->identifiant = identifiant;
     this->motDePasse = motDePasse;
 }
 
+const string &Personne::getIdentifiant() const {
+    return identifiant;
+}
+
+const string &Personne::getMotDePasse() const {
+    return motDePasse;
+}
 
