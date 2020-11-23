@@ -7,7 +7,6 @@
 
 
 #include "Destination.h"
-#include "Passager.h"
 #include "Date.h"
 #include <vector>
 
@@ -17,6 +16,8 @@ public:
     Vol(int numero, int nombrePlacesMaximal, float prix);
     bool recherche(const vector<Vol> &vols) const;
     Vol ajouterVol(int numero, int nombrePlacesMaximal, float prix);
+    static void afficherVols(const vector<Vol> &vols);
+    void afficher() const;
 
 private:
     int numero;
@@ -24,8 +25,6 @@ private:
     float prix;
     Destination destination;
     Date date;
-    vector<Passager> passagers;
-
 };
 
 

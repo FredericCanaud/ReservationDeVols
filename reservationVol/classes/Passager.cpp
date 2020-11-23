@@ -40,30 +40,23 @@ Passager Passager::inscription() {
     m["Mademoiselle"] = Titre::Mademoiselle;
     string buff;
 
-
-    // remplissage des champs
-    cout << "Entrez votre identifiant : ";
+    cout << "Entrez votre identifiant : " << endl;
     cin >> identifiant;
-
-    cout << "Entrez votre mot de passe : ";
+    cout << "Entrez votre mot de passe : " << endl;
     cin >> motDePasse;
-
-    cout << "Confirmez votre mot de passe : ";
+    cout << "Confirmez votre mot de passe : " << endl;
     cin >> confirmMotDePasse;
 
     // vérification du mot de passe
     while(motDePasse != confirmMotDePasse){
-        cout << "Les mots de passe saisis ne se correspondent pas !" << endl << "Entrez votre mot de passe : ";
+        cout << "Les mots de passe saisis ne se correspondent pas !" << endl << "Entrez votre mot de passe : " << endl;
         cin >> motDePasse;
-
-        cout << "Confirmez votre mot de passe : ";
+        cout << "Confirmez votre mot de passe : " << endl;
         cin >> confirmMotDePasse;
     }
-
-    cout << "Entrez votre nom : ";
+    cout << " Entrez votre nom : " << endl;
     cin >> nom;
-
-    cout << "Entrez votre prenom : ";
+    cout << " Entrez votre prenom : " << endl;
     cin >> prenom;
 
     Helper::saisirEntier(age, "Entrez votre age : ");
@@ -73,7 +66,7 @@ Passager Passager::inscription() {
     cin >> titre;
 
     while(Titre::Monsieur >= m[titre] && Titre::Mademoiselle <= m[titre]){
-        cout << "Erreur : Veuillez saisir un titre correct (Monsieur, Madame ou Mademoiselle) : ";
+        cout << " Erreur : Veuillez saisir un titre correct (Monsieur, Madame ou Mademoiselle) : " << endl;
         cin >> titre;
     }
 
@@ -82,4 +75,31 @@ Passager Passager::inscription() {
 
 
     return Passager(identifiant, motDePasse, nom, prenom, age, m[titre], numeroPasseport);
+}
+
+Passager Passager::connexion(const vector<Passager>& passagers) {
+    bool correct = false;
+    Passager p;
+
+    string identifiantSaisi, motDePasseSaisi;
+    cout <<" Entrez votre identifiant : " << endl;
+    cin >> identifiantSaisi;
+    cout <<" Entrez votre mot de passe : " << endl;
+    cin >> motDePasseSaisi;
+    while(!correct){
+        for (const Passager& passager : passagers){
+            if (passager.getIdentifiant() == identifiantSaisi && passager.getMotDePasse() == motDePasseSaisi){
+                p = passager;
+                correct = true;
+            }
+        }
+        if(!correct){
+            cout <<" L'identifiant ou le mot de passe saisi est incorrect ! " << endl;
+            cout <<" Entrez a nouveau votre identifiant : " << endl;
+            cin >> identifiantSaisi;
+            cout <<" Entrez a nouveau votre mot de passe : " << endl;
+            cin >> motDePasseSaisi;
+        }
+    }
+    return p;
 }

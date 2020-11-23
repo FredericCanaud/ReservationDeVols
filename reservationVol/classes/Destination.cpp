@@ -14,11 +14,11 @@ Destination::Destination(string villeDepart, string villeArrivee) {
     this->villeArrivee = villeArrivee;
 }
 
-string Destination::getVilleDepart(){
+string Destination::getVilleDepart() const {
     return villeDepart;
 }
 
-string Destination::getVilleArrivee(){
+string Destination::getVilleArrivee() const {
     return villeArrivee;
 }
 

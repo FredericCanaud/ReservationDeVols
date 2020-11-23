@@ -12,6 +12,8 @@ class Administrateur : virtual Personne{
 public:
     Administrateur();
     Administrateur(string, string);
+
+    void connexion();
 };
 
 

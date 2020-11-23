@@ -6,12 +6,17 @@
 #define RESERVATIONDEVOLS_PERSONNE_H
 
 #include <string>
+#include "Vol.h"
+
 using namespace std;
 
 class Personne {
 public:
     Personne();
     Personne(string,string);
+
+    const string &getIdentifiant() const;
+    const string &getMotDePasse() const;
 
 private:
     string identifiant;

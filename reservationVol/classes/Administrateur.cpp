@@ -3,6 +3,8 @@
 //
 
 #include "Administrateur.h"
+#include <iostream>
+using namespace std;
 
 Administrateur::Administrateur() : Personne() {
 
@@ -10,4 +12,19 @@ Administrateur::Administrateur() : Personne() {
 
 Administrateur::Administrateur(string identifiant, string motDePasse) : Personne(identifiant, motDePasse){
 
+}
+
+void Administrateur::connexion() {
+    string identifiantSaisi, motDePasseSaisi;
+    cout <<" Entrez votre identifiant : " << endl;
+    cin >> identifiantSaisi;
+    cout <<" Entrez votre mot de passe : " << endl;
+    cin >> motDePasseSaisi;
+    while(this->getIdentifiant() == identifiantSaisi && this->getMotDePasse() == motDePasseSaisi){
+        cout <<" L'identifiant ou le mot de passe saisi est incorrect ! " << endl;
+        cout <<" Entrez a nouveau votre identifiant : " << endl;
+        cin >> identifiantSaisi;
+        cout <<" Entrez a nouveau votre mot de passe : " << endl;
+        cin >> motDePasseSaisi;
+    }
 }

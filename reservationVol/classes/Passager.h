@@ -7,6 +7,8 @@
 
 #include "Personne.h"
 #include <string>
+#include <vector>
+
 using namespace std;
 
 enum class Titre { Monsieur, Madame, Mademoiselle};
