@@ -11,7 +11,7 @@
 
 using namespace std;
 
-enum class Titre { Monsieur, Madame, Mademoiselle};
+enum class Titre {Monsieur, Madame, Mademoiselle};
 
 class Passager : Personne{
 private:
@@ -23,12 +23,13 @@ private:
 
 public:
     Passager();
-    Passager(string,string,string,string,int, Titre, int);
+    Passager(string, string, string, string, int, Titre, int);
     void reserverVol();
     void confirmerReservation();
     void annulerReservation();
 
     static Passager inscription();
+    static Passager connexion(const vector<Passager>& passagers);
 };
 
 

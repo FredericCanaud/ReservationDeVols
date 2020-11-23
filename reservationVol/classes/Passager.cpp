@@ -7,6 +7,7 @@
 #include "Passager.h"
 #include "helper.h"
 
+
 Passager::Passager() : Personne() {
 
 }
@@ -31,19 +32,26 @@ void Passager::annulerReservation() {
 
 }
 
+
+// inscription à l'aéroport
 Passager Passager::inscription() {
+
+	// déclaration des variables
     string identifiant, motDePasse, confirmMotDePasse, nom, prenom, titre;
     int age, numeroPasseport;
+
     map<string,Titre> m;
     m["Monsieur"] = Titre::Monsieur;
     m["Madame"] = Titre::Madame;
     m["Mademoiselle"] = Titre::Mademoiselle;
-    string buff;
 
+    // création identifiant et mot de passe
     cout << "Entrez votre identifiant : " << endl;
     cin >> identifiant;
+
     cout << "Entrez votre mot de passe : " << endl;
     cin >> motDePasse;
+
     cout << "Confirmez votre mot de passe : " << endl;
     cin >> confirmMotDePasse;
 
@@ -54,28 +62,44 @@ Passager Passager::inscription() {
         cout << "Confirmez votre mot de passe : " << endl;
         cin >> confirmMotDePasse;
     }
+
+    // création des informations personnelles
+    // prénom
     cout << " Entrez votre nom : " << endl;
     cin >> nom;
+
+    // nom
     cout << " Entrez votre prenom : " << endl;
     cin >> prenom;
 
-    Helper::saisirEntier(age, "Entrez votre age : ");
+    // age
+    Helper::saisirEntier(age, 15, 150, "Entrez votre age : ");
 
-
+    // titre
     cout << "Entrez votre titre (Monsieur, Madame ou Mademoiselle) : ";
     cin >> titre;
 
-    while(Titre::Monsieur >= m[titre] && Titre::Mademoiselle <= m[titre]){
-        cout << " Erreur : Veuillez saisir un titre correct (Monsieur, Madame ou Mademoiselle) : " << endl;
+    // vérifiacation du titre
+    while ((titre != "Monsieur") && (titre != "Madame") && (titre != "Mademoiselle")){
+    	cout << " Erreur : Veuillez saisir un titre correct (Monsieur, Madame ou Mademoiselle) : " << endl;
         cin >> titre;
     }
 
 
-    Helper::saisirEntier(numeroPasseport, "Entrez votre numero de passport :");
+    while(Titre::Monsieur >= m[titre] && Titre::Mademoiselle <= m[titre]){
 
+    }
 
+    // numerot de passeport
+    Helper::saisirEntier(numeroPasseport, 0, -1, "Entrez votre numero de passport :");
+
+    // création du compte
     return Passager(identifiant, motDePasse, nom, prenom, age, m[titre], numeroPasseport);
 }
+
+
+
+
 
 Passager Passager::connexion(const vector<Passager>& passagers) {
     bool correct = false;

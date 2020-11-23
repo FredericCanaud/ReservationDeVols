@@ -43,3 +43,7 @@ cmake-build-debug/CMakeFiles/ReservationDeVols.dir/Personne.cpp.obj
 cmake-build-debug/ReservationDeVols.exe
 .idea/inspectionProfiles/Project_Default.xml
 /.metadata/
+reservationVol/.setings/
+reservationVol/Debug/
+reservationVol/.cproject
+reservationVol/.projet

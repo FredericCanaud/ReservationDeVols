@@ -16,8 +16,8 @@ class Helper{
 public:
 	static bool is_number(const std::string& s);
 	static int to_int(const std::string& s);
-	static bool isValidInt(const int &i);
-	static void saisirEntier(int &value, std::string message);
+	static bool isValidInt(const int &i , int min, int max);
+	static void saisirEntier(int &value, int min, int max, std::string message);
 };
 
 
