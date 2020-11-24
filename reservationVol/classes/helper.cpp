@@ -7,6 +7,7 @@
 
 #include"helper.h"
 #include<string>
+#include<vector>
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
@@ -65,4 +66,55 @@ void Helper::saisirEntier(int &value, int min, int max, std::string message){
 
 
 
-// =============   ===================
+// ============= GESTION DES STRING ===================
+
+// retourne un vecteur de string
+vector<string> Helper::split(const string& chaine, const string& separateur){
+    vector<string> tokens;
+    size_t prev = 0, pos = 0;
+    do{
+        pos = chaine.find(separateur, prev);
+        if (pos == string::npos) pos = chaine.length();
+        string token = chaine.substr(prev, pos-prev);
+        if (!token.empty()) tokens.push_back(token);
+        prev = pos + separateur.length();
+    }while (pos < chaine.length() && prev < chaine.length());
+
+    return tokens;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <map>
+#include<vector>
+#include<string>
 #include "Passager.h"
 #include "helper.h"
 #include "manipulateurFichier.h"
@@ -146,7 +148,7 @@ string Passager::toSave(){
 
 
 // fonction pour sauvegarder les passagers
-void Passager::save(list<Passager> passagers, string nomFichier){
+void Passager::save(list<Sauvegardable*> passagers, string nomFichier){
 	// manipulateur de fichier
 	ManipulateurFichier manip(nomFichier);
 
@@ -154,12 +156,12 @@ void Passager::save(list<Passager> passagers, string nomFichier){
 	list<string> toSave;
 
 	// itérateur sur la liste
-	list<Passager>::iterator it;
+	list<Sauvegardable*>::iterator it;
 
 	// pour chaque passager
 	for (it = passagers.begin() ; it != passagers.end() ; it++){
 		// ajouter à la liste les informations à sauvegarder
-		toSave.push_back(it->toSave()) ;
+		toSave.push_back((*it)->toSave()) ;
 	}
 
 	// écrire dans le fichier
@@ -168,9 +170,9 @@ void Passager::save(list<Passager> passagers, string nomFichier){
 
 
 // retourne une liste de passagers
-list<Sauvegardable> Passager::load(string nomFichier){
+list<Sauvegardable*> Passager::load(string nomFichier){
 	// liste des passagers
-	list<Sauvegardable> passagers;
+	list<Sauvegardable*> passagers;
 
 	// manipulateur de fichier
 	ManipulateurFichier manip(nomFichier);
@@ -190,17 +192,20 @@ list<Sauvegardable> Passager::load(string nomFichier){
 	// pour chaque lignes
 	for (it = infos.begin() ; it != infos.end() ; it++){
 		string separateur = ";";
-		string identifiant = it->substr(0, it->find(separateur));
-		string mdp = it->substr(1, it->find(separateur));
-		string nom = it->substr(2, it->find(separateur));
-		string prenom = it->substr(3, it->find(separateur));
-		int age = Helper::to_int(it->substr(4, it->find(separateur)));
-		Titre titre = m[it->substr(5, it->find(separateur))];
-		int numPasseport = Helper::to_int(it->substr(6, it->find(separateur)));
+		vector<string> ligne = Helper::split(*it, separateur);
+		vector<string>::iterator itv = ligne.begin();
 
-		Sauvegardable *passager = new Passager(identifiant, mdp, nom, prenom, age, titre, numPasseport);
+		string identifiant = *itv;
+		string mdp = *(itv+1);
+		string nom = *(itv+2);
+		string prenom = *(itv+3);
+		int age = Helper::to_int(*(itv+4));
+		Titre titre = m[*(itv+5)];
+		int numPasseport = Helper::to_int(*(itv+6));
 
-		passagers.push_front(*passager);
+		Passager *passager = new Passager(identifiant, mdp, nom, prenom, age, titre, numPasseport);
+
+		passagers.push_front(passager);
 	}
 
 

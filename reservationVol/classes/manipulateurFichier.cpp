@@ -21,13 +21,9 @@ Sauvegardable::~Sauvegardable(){
 }
 
 // retourne un string qui servira de sauvegarde
-	string Sauvegardable::toSave(){
-		return "mauvaise classe (ce toSave() vient de Sauvegardable) lol ";
-	}
-	//methode de sauvegarde à compléter
-	void Sauvegardable::save(list<Sauvegardable> liste, string nomFichier){
-
-	}
+string Sauvegardable::toSave(){
+	return "mauvaise classe (ce toSave() vient de Sauvegardable) lol ";
+}
 
 
 //========== MANIPULATEUR DE FICHIER ============

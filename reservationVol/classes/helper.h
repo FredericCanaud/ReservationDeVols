@@ -10,6 +10,8 @@
 
 #include<string>
 #include <algorithm>
+#include<vector>
+using namespace std;
 
 class Helper{
 
@@ -18,6 +20,8 @@ public:
 	static int to_int(const std::string& s);
 	static bool isValidInt(const int &i , int min, int max);
 	static void saisirEntier(int &value, int min, int max, std::string message);
+
+	static vector<string> split(const string& str, const string& delim);
 };
 
 

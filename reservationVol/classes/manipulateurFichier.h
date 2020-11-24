@@ -18,8 +18,8 @@ public:
 	// retourne un string qui servira de sauvegarde
 	virtual string toSave();
 	//methode de sauvegarde à compléter
-	static void save(list<Sauvegardable> liste, string nomFichier);
-	static list<Sauvegardable> load(string nomFichier);
+	static void save(list<Sauvegardable*> liste, string nomFichier);
+	static list<Sauvegardable*> load(string nomFichier);
 
 	virtual ~Sauvegardable();
 };

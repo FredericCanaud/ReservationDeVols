@@ -11,10 +11,10 @@ int main()
     int choix, choix2;
     vector<Vol> vols;
 
-    list<Sauvegardable> passagers;
+    list<Sauvegardable*> passagers;
     passagers = Passager::load("./sauvegarde/passagers.txt");
-    list<Sauvegardable>::iterator it = passagers.begin();
-    cout << it->thisu().toSave()<<endl<<endl;
+    list<Sauvegardable*>::iterator it = passagers.begin();
+    cout << (*it)->toSave()<<endl<<endl;
 
     cout << " Programme Reservation de vols" << endl << endl;
 
@@ -23,7 +23,7 @@ int main()
         switch (choix) {
             case 1: {
                 Passager p = Passager::inscription(); //renvoie vers la page pour l'inscription
-                passagers.push_back(p);
+                passagers.push_back(&p);
                 do {
                     choix2 = Interface::menuPassager();
                     switch (choix2) {
