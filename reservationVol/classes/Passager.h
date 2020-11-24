@@ -32,9 +32,9 @@ public:
     static Passager inscription();
     static Passager connexion(const vector<Passager>& passagers);
 
-    string toSave();
+    virtual string toSave() override;
     static void save(list<Passager>, string nomFichier);
-    static list<Passager> load(string nomfichier);
+    static list<Sauvegardable> load(string nomFichier);
 
     string getNom(){
     	return this->nom;
@@ -51,6 +51,10 @@ public:
     int getNumeroPasseport(){
     	return this->numeroPasseport;
     }
+    Passager* thisu(){
+    	return this;
+    }
+
     string titreString(){
     	switch(this->titre){
 			case Titre::Monsieur:

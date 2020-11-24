@@ -19,6 +19,7 @@ public:
 	virtual string toSave();
 	//methode de sauvegarde à compléter
 	static void save(list<Sauvegardable> liste, string nomFichier);
+	static list<Sauvegardable> load(string nomFichier);
 
 	virtual ~Sauvegardable();
 };
@@ -43,8 +44,11 @@ public:
 	// ajoute une ligne à la fin
 	void ecrire(string ligne);
 
-	//retourne le fichier sous forme de chaine de caractères
+	//retourne le fichier sous forme d'une chaine de caractères
 	string lire();
+
+	// retourne le fichier sous forme d'une liste de chaines de caractères
+	list<string> lireLignes();
 };
 
 

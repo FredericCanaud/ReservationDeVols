@@ -11,7 +11,10 @@ int main()
     int choix, choix2;
     vector<Vol> vols;
 
-    list<Passager> passagers;
+    list<Sauvegardable> passagers;
+    passagers = Passager::load("./sauvegarde/passagers.txt");
+    list<Sauvegardable>::iterator it = passagers.begin();
+    cout << it->thisu().toSave()<<endl<<endl;
 
     cout << " Programme Reservation de vols" << endl << endl;
 
@@ -67,5 +70,5 @@ int main()
     } while(choix != 3);
 
     // sauvegarde à la fin du programme
-    Passager::save(passagers, "./sauvegarde/passagers.txt");
+   // Passager::save(passagers, "./sauvegarde/passagers.txt");
 }

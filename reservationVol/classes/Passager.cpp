@@ -144,21 +144,67 @@ string Passager::toSave(){
 	return result;
 }
 
+
+// fonction pour sauvegarder les passagers
 void Passager::save(list<Passager> passagers, string nomFichier){
+	// manipulateur de fichier
 	ManipulateurFichier manip(nomFichier);
+
+	// liste des informations à sauvegarder
 	list<string> toSave;
+
+	// itérateur sur la liste
 	list<Passager>::iterator it;
 
+	// pour chaque passager
 	for (it = passagers.begin() ; it != passagers.end() ; it++){
+		// ajouter à la liste les informations à sauvegarder
 		toSave.push_back(it->toSave()) ;
 	}
 
+	// écrire dans le fichier
 	manip.ecrire(toSave);
-
 }
 
-list<Passager> Passager::load(string nomfichier){
-	return list<Passager>();
+
+// retourne une liste de passagers
+list<Sauvegardable> Passager::load(string nomFichier){
+	// liste des passagers
+	list<Sauvegardable> passagers;
+
+	// manipulateur de fichier
+	ManipulateurFichier manip(nomFichier);
+
+	// liste des données sauvegardées
+	list<string> infos = manip.lireLignes();
+
+	// itérateur sur les informations
+	list<string>::iterator it;
+
+	// création du titre avec une map
+	map<string,Titre> m;
+	m["Monsieur"] = Titre::Monsieur;
+	m["Madame"] = Titre::Madame;
+	m["Mademoiselle"] = Titre::Mademoiselle;
+
+	// pour chaque lignes
+	for (it = infos.begin() ; it != infos.end() ; it++){
+		string separateur = ";";
+		string identifiant = it->substr(0, it->find(separateur));
+		string mdp = it->substr(1, it->find(separateur));
+		string nom = it->substr(2, it->find(separateur));
+		string prenom = it->substr(3, it->find(separateur));
+		int age = Helper::to_int(it->substr(4, it->find(separateur)));
+		Titre titre = m[it->substr(5, it->find(separateur))];
+		int numPasseport = Helper::to_int(it->substr(6, it->find(separateur)));
+
+		Sauvegardable *passager = new Passager(identifiant, mdp, nom, prenom, age, titre, numPasseport);
+
+		passagers.push_front(*passager);
+	}
+
+
+	return passagers;
 }
 
 

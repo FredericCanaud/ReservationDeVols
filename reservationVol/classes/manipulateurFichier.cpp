@@ -22,7 +22,7 @@ Sauvegardable::~Sauvegardable(){
 
 // retourne un string qui servira de sauvegarde
 	string Sauvegardable::toSave(){
-		return "mauvaise classe";
+		return "mauvaise classe (ce toSave() vient de Sauvegardable) lol ";
 	}
 	//methode de sauvegarde à compléter
 	void Sauvegardable::save(list<Sauvegardable> liste, string nomFichier){
@@ -101,7 +101,26 @@ string ManipulateurFichier::lire(){
 }
 
 
+list<string> ManipulateurFichier::lireLignes(){
+	list<string> passagers;
+	ifstream monFlux(this->fichier.c_str());  //Ouverture d'un fichier en lecture
 
+	if(monFlux){
+		string ligne; //Une variable pour stocker les lignes lues
+
+		while(getline(monFlux, ligne)) //Tant qu'on n'est pas à la fin, on lit
+		{
+			passagers.push_back(ligne);
+		}
+	}
+	else
+	{
+		cout << "ERREUR: Impossible d'ouvrir le fichier " + this->fichier + " en lecture" << endl;
+	}
+	monFlux.close();
+
+	return passagers;
+}
 
 
 
