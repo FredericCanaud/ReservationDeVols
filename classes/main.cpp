@@ -12,7 +12,7 @@ int main()
     vector<Vol> vols;
 
     list<Sauvegardable*> passagers;
-    passagers = Passager::load("./sauvegarde/passagers.txt");
+    passagers = Passager::load("../sauvegarde/passagers.txt");
     list<Sauvegardable*>::iterator it = passagers.begin();
     cout << (*it)->toSave()<<endl<<endl;
 
