@@ -24,6 +24,6 @@ public:
 	static vector<string> split(const string& str, const string& delim);
 };
 
-
+extern string s;
 
 #endif /* CLASSES_HELPER_H_ */

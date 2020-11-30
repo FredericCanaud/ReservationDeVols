@@ -189,10 +189,13 @@ list<Passager*> Passager::load(string nomFichier){
 
 	// pour chaque lignes
 	for (it = infos.begin() ; it != infos.end() ; it++){
-		//string separateur = ";";
+	    // liste des champs de la ligne
 		vector<string> ligne = Helper::split(*it, s);
+
+		// itérateur sur les champs
 		vector<string>::iterator itv = ligne.begin();
 
+		// récupération des valeur des champs
 		string identifiant = *itv;
 		string mdp = *(itv+1);
 		string nom = *(itv+2);
@@ -201,8 +204,10 @@ list<Passager*> Passager::load(string nomFichier){
 		Titre titre = m[*(itv+5)];
 		int numPasseport = Helper::to_int(*(itv+6));
 
+		// création du passager
 		Passager *passager = new Passager(identifiant, mdp, nom, prenom, age, titre, numPasseport);
 
+		//ajout du passager à la liste de passager
 		passagers.push_front(passager);
 	}
 

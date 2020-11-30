@@ -14,7 +14,7 @@ int Interface::menuPrincipal() {
         cout << " 1 - S'inscrire" << endl;
         cout << " 2 - Se connecter" << endl;
         cout << " 3 - Quitter l'application" << endl;
-        cout << " Saissisez votre choix : ";
+        cout << " Saissisez votre choix :  ";
         cin >> choix;
         cout << endl;
     } while (choix <= 0 || choix >= 4);

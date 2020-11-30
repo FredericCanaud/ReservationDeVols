@@ -4,12 +4,14 @@
 #include "Passager.h"
 #include "Interface.h"
 #include "Vol.h"
+#include "Reservation.h"
 using namespace std;
 
 //variable globale
 string s = ";";
 list<Passager*> passagers;
 list<Vol*> vols;
+list<Reservation*> reservations;
 
 int main()
 {
@@ -19,6 +21,7 @@ int main()
     // chargement des
     vols = Vol::load("../sauvegarde/vols.txt");
     passagers = Passager::load("../sauvegarde/passagers.txt");
+    reservations = Reservation::load("../sauvegarde/reservations.txt");
 
 
     list<Passager*>::iterator it = passagers.begin();
@@ -83,4 +86,5 @@ int main()
     // sauvegarde à la fin du programme
     Passager::save(passagers, "../sauvegarde/passagers.txt");
     Vol::save(vols, "../sauvegarde/vols.txt");
+    Reservation::save(reservations, "../sauvegarde/reservations.txt");
 }
