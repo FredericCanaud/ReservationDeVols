@@ -11,10 +11,11 @@ using namespace std;
 class Destination {
 public:
     Destination();
-    Destination(string,string);
+    Destination(string villeDepart, string villeArrivee);
     string getVilleDepart() const;
     string getVilleArrivee() const;
     void afficher();
+    string toString() const;
     Destination saisirDestination();
 
 private:

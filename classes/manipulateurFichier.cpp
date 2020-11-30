@@ -25,7 +25,6 @@ string Sauvegardable::toSave(){
 	return "mauvaise classe (ce toSave() vient de Sauvegardable) lol ";
 }
 
-
 //========== MANIPULATEUR DE FICHIER ============
 
 ManipulateurFichier::ManipulateurFichier(){

@@ -1,20 +1,31 @@
 #include <iostream>
 #include<list>
+#include <string>
 #include "Passager.h"
 #include "Interface.h"
 #include "Vol.h"
 using namespace std;
 
+//variable globale
+string s = ";";
+list<Passager*> passagers;
+list<Vol*> vols;
+
 int main()
 {
     setlocale(LC_ALL, "");
     int choix, choix2;
-    vector<Vol> vols;
 
-    list<Sauvegardable*> passagers;
+    // chargement des
+    vols = Vol::load("../sauvegarde/vols.txt");
     passagers = Passager::load("../sauvegarde/passagers.txt");
-    list<Sauvegardable*>::iterator it = passagers.begin();
+
+
+    list<Passager*>::iterator it = passagers.begin();
     cout << (*it)->toSave()<<endl<<endl;
+    it++;
+    cout << (*it)->toSave()<<endl<<endl;
+
 
     cout << " Programme Reservation de vols" << endl << endl;
 
@@ -23,16 +34,16 @@ int main()
         switch (choix) {
             case 1: {
                 Passager p = Passager::inscription(); //renvoie vers la page pour l'inscription
-                passagers.push_back(&p);
+                passagers.push_back(&p); // ajout du passager à la liste de passagers
                 do {
-                    choix2 = Interface::menuPassager();
+                    choix2 = Interface::menuPassager(); // renvoie versle menu passager
                     switch (choix2) {
                         case 1:
                             p.reserverVol();
                             system("CLS");
                             break;
                         case 2:
-                            Vol::afficherVols(vols);
+                            //Vol::afficherVols(vols);
                             system("CLS");
                             break;
                         case 3:
@@ -58,7 +69,7 @@ int main()
                 break;
             }
             case 3: {
-            	cout << "boubye";
+            	cout << "\nboubye";
                 system("cls");
                 break;
             }
@@ -70,5 +81,6 @@ int main()
     } while(choix != 3);
 
     // sauvegarde à la fin du programme
-   // Passager::save(passagers, "./sauvegarde/passagers.txt");
+    Passager::save(passagers, "../sauvegarde/passagers.txt");
+    Vol::save(vols, "../sauvegarde/vols.txt");
 }

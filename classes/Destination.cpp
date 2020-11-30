@@ -14,6 +14,14 @@ Destination::Destination(string villeDepart, string villeArrivee) {
     this->villeArrivee = villeArrivee;
 }
 
+string Destination::toString() const {
+    string result = "";
+    string s = ";"; // séparateur
+    result += this->getVilleDepart() + s + this->getVilleArrivee();
+
+    return result;
+}
+
 string Destination::getVilleDepart() const {
     return villeDepart;
 }

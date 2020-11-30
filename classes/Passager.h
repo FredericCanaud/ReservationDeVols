@@ -32,9 +32,9 @@ public:
     static Passager inscription();
     static Passager connexion(const vector<Passager>& passagers);
 
-    virtual string toSave() override;
-    static void save(list<Sauvegardable*>, string nomFichier);
-    static list<Sauvegardable*> load(string nomFichier);
+    string toSave() override;
+    static void save(list<Passager *> liste, string nomFichier);
+    static list<struct Passager *> load(string nomFichier);
 
     string getNom(){
     	return this->nom;
@@ -67,6 +67,7 @@ public:
     	return "Monsieur";
     }
 };
-
+extern string s;
+extern list<Passager*> passagers;
 
 #endif //RESERVATIONDEVOLS_PASSAGER_H

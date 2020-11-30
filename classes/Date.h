@@ -5,12 +5,17 @@
 #ifndef RESERVATIONDEVOLS_DATE_H
 #define RESERVATIONDEVOLS_DATE_H
 
+#include <string>
+using namespace std;
+
 
 class Date {
 public:
     Date();
-    Date(int, int, int, int, int);
+    Date(int jour, int mois, int annee, int heure, int minute);
     Date saisirDate();
+
+    string toString() const;
 
     int getHeure() const;
 

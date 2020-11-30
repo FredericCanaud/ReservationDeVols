@@ -10,12 +10,21 @@ Date::Date() {
 
 }
 
-Date::Date(int minute, int heure, int jour, int mois, int annee) {
+Date::Date(int jour, int mois, int annee, int heure, int minute) {
     this->minute = minute;
     this->heure = heure;
     this->jour = jour;
     this->mois = mois;
     this->annee = annee;
+}
+
+string Date::toString() const {
+    string result = "";
+    string s = ";";
+
+    result += to_string(this->getJour()) + s + to_string(this->getMois()) + s + to_string(this->getAnnee()) + s + to_string(this->getHeure()) + s + to_string(this->getMinute());
+
+    return result;
 }
 
 int Date::getHeure() const {

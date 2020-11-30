@@ -146,33 +146,31 @@ string Passager::toSave(){
 	return result;
 }
 
+// sauvegarde les informations dans un txt
+void Passager::save(list<Passager *> liste, string nomFichier) {
+    // manipulateur de fichier
+    ManipulateurFichier manip(nomFichier);
 
-// fonction pour sauvegarder les passagers
-void Passager::save(list<Sauvegardable*> passagers, string nomFichier){
-	// manipulateur de fichier
-	ManipulateurFichier manip(nomFichier);
+    // liste des informations à sauvegarder
+    list<string> toSave;
 
-	// liste des informations à sauvegarder
-	list<string> toSave;
+    // itérateur sur la liste
+    list<Passager*>::iterator it;
 
-	// itérateur sur la liste
-	list<Sauvegardable*>::iterator it;
+    // pour chaque passager
+    for (it = liste.begin() ; it != liste.end() ; it++){
+        // ajouter à la liste les informations à sauvegarder
+        toSave.push_front((*it)->toSave()) ;
+    }
 
-	// pour chaque passager
-	for (it = passagers.begin() ; it != passagers.end() ; it++){
-		// ajouter à la liste les informations à sauvegarder
-		toSave.push_back((*it)->toSave()) ;
-	}
-
-	// écrire dans le fichier
-	manip.ecrire(toSave);
+    // écrire dans le fichier
+    manip.ecrire(toSave);
 }
 
-
 // retourne une liste de passagers
-list<Sauvegardable*> Passager::load(string nomFichier){
+list<Passager*> Passager::load(string nomFichier){
 	// liste des passagers
-	list<Sauvegardable*> passagers;
+	list<Passager*> passagers;
 
 	// manipulateur de fichier
 	ManipulateurFichier manip(nomFichier);
@@ -191,8 +189,8 @@ list<Sauvegardable*> Passager::load(string nomFichier){
 
 	// pour chaque lignes
 	for (it = infos.begin() ; it != infos.end() ; it++){
-		string separateur = ";";
-		vector<string> ligne = Helper::split(*it, separateur);
+		//string separateur = ";";
+		vector<string> ligne = Helper::split(*it, s);
 		vector<string>::iterator itv = ligne.begin();
 
 		string identifiant = *itv;
