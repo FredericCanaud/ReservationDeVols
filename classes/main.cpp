@@ -4,19 +4,23 @@
 #include "Passager.h"
 #include "Interface.h"
 #include "Vol.h"
+#include "Administrateur.h"
 #include "Reservation.h"
 using namespace std;
 
-//variable globale
+//variables globales
 string s = ";";
 list<Passager*> passagers;
 list<Vol*> vols;
 list<Reservation*> reservations;
+Administrateur* admin;
+Passager* utilisateur;
 
 int main()
 {
     setlocale(LC_ALL, "");
     int choix, choix2;
+    admin = new Administrateur("admin", "lejavadabord");
 
     // chargement des
     vols = Vol::load("../sauvegarde/vols.txt");
@@ -39,7 +43,7 @@ int main()
                 Passager p = Passager::inscription(); //renvoie vers la page pour l'inscription
                 passagers.push_back(&p); // ajout du passager à la liste de passagers
                 do {
-                    choix2 = Interface::menuPassager(); // renvoie versle menu passager
+                    choix2 = Interface::menuPassager(); // renvoie vers le menu passager
                     switch (choix2) {
                         case 1:
                             p.reserverVol();
@@ -68,6 +72,22 @@ int main()
                 break;
             }
             case 2: {
+                do{
+                    choix = Interface::menuConnexion();
+                    switch (choix) {
+                        case 1:
+                            admin->connexion();
+                            choix2 = Interface::menuAdministrateur();
+                            do{
+
+                            }while (choix2 != 5);
+                            break;
+                        case 2:
+                            utilisateur = Passager::connexion();
+                    }
+                }while (choix != 3);
+
+
                 system("cls");
                 break;
             }

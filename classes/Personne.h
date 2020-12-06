@@ -15,9 +15,8 @@ public:
     Personne();
     Personne(string,string);
 
-    const string &getIdentifiant() const;
-    const string &getMotDePasse() const;
 
+    // GETTERS
     string getIdentifiant(){
     	return this->identifiant;
     }

@@ -20,11 +20,17 @@ void Administrateur::connexion() {
     cin >> identifiantSaisi;
     cout <<" Entrez votre mot de passe : " << endl;
     cin >> motDePasseSaisi;
-    while(this->getIdentifiant() == identifiantSaisi && this->getMotDePasse() == motDePasseSaisi){
+    cout << identifiantSaisi << "  " << motDePasseSaisi << endl;
+
+    while((this->getIdentifiant() != identifiantSaisi) || (this->getMdp() != motDePasseSaisi)){
         cout <<" L'identifiant ou le mot de passe saisi est incorrect ! " << endl;
         cout <<" Entrez a nouveau votre identifiant : " << endl;
         cin >> identifiantSaisi;
         cout <<" Entrez a nouveau votre mot de passe : " << endl;
         cin >> motDePasseSaisi;
     }
+
+    cout << "connected " <<endl<<endl;
 }
+
+

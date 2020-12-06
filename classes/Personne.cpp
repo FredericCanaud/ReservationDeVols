@@ -11,11 +11,4 @@ Personne::Personne(string identifiant, string motDePasse) {
     this->motDePasse = motDePasse;
 }
 
-const string &Personne::getIdentifiant() const {
-    return identifiant;
-}
-
-const string &Personne::getMotDePasse() const {
-    return motDePasse;
-}
 

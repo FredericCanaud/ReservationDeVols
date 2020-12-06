@@ -23,19 +23,25 @@ private:
     int numeroPasseport;
 
 public:
+    // constructeur par défault
     Passager();
+
+    // constructeur
     Passager(string, string, string, string, int, Titre, int);
+
+    // actions utilisateurs
     void reserverVol();
     void confirmerReservation();
     void annulerReservation();
-
     static Passager inscription();
-    static Passager connexion(const vector<Passager>& passagers);
+    static Passager* connexion();
 
+    // fonction pour la sauvegarde
     string toSave() override;
     static void save(list<Passager *> liste, string nomFichier);
     static list<struct Passager *> load(string nomFichier);
 
+    // GETTERS
     string getNom(){
     	return this->nom;
     }
@@ -69,5 +75,6 @@ public:
 };
 extern string s;
 extern list<Passager*> passagers;
+extern Passager* utilisateur;
 
 #endif //RESERVATIONDEVOLS_PASSAGER_H

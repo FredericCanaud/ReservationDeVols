@@ -6,6 +6,7 @@
 #include <map>
 #include<vector>
 #include<string>
+#include <list>
 #include "Passager.h"
 #include "helper.h"
 #include "manipulateurFichier.h"
@@ -104,23 +105,33 @@ Passager Passager::inscription() {
 
 
 // connection
-Passager Passager::connexion(const vector<Passager>& passagers) {
+Passager* Passager::connexion() {
     bool correct = false;
-    Passager p;
+    Passager* p;
 
     string identifiantSaisi, motDePasseSaisi;
     cout <<" Entrez votre identifiant : " << endl;
     cin >> identifiantSaisi;
     cout <<" Entrez votre mot de passe : " << endl;
     cin >> motDePasseSaisi;
+
+    // tant que le mot de passe n'est pas correct
     while(!correct){
-        for (const Passager& passager : passagers){
-            if (passager.getIdentifiant() == identifiantSaisi && passager.getMotDePasse() == motDePasseSaisi){
-                p = passager;
-                correct = true;
+
+        // itérateur sur la liste de passager
+        list<Passager*>::iterator it;
+
+        // pour chaque passager enregistré
+        for (it = passagers.begin() ; it != passagers.end() ; it++){
+            // si on trouve l'id et le mot de passe correspondant
+            if (((*it)->getIdentifiant() == identifiantSaisi) && ((*it)->getMdp() == motDePasseSaisi)){
+                p = (*it); // on set le passager à retourner
+                correct = true; // la connection est correcte
             }
         }
-        if(!correct){
+
+        // si le mot de passe n'est pas correct
+        if (!correct){
             cout <<" L'identifiant ou le mot de passe saisi est incorrect ! " << endl;
             cout <<" Entrez a nouveau votre identifiant : " << endl;
             cin >> identifiantSaisi;
@@ -128,6 +139,8 @@ Passager Passager::connexion(const vector<Passager>& passagers) {
             cin >> motDePasseSaisi;
         }
     }
+
+    // on retourne le pointeur vers le passager qui s'est connécté
     return p;
 }
 

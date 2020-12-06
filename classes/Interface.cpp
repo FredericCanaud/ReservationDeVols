@@ -21,6 +21,22 @@ int Interface::menuPrincipal() {
     return choix;
 }
 
+int Interface::menuConnexion() {
+    int choix;
+    do
+    {
+        cout << "            Page de connexion ! " << endl << endl;
+        cout << " Voici les differentes operations possibles : " << endl;
+        cout << " 1 - Connection passager" << endl;
+        cout << " 2 - Connection admin" << endl;
+        cout << " 3 - Retour" << endl << endl;
+        cout << " Saissisez votre choix : ";
+        cin >> choix;
+        cout << endl;
+    } while (choix < 1 || choix > 3);
+    return choix;
+}
+
 int Interface::menuPassager() {
     int choix;
     do
@@ -53,7 +69,6 @@ int Interface::menuAdministrateur() {
         cout << " 3 - Ajouter un vol" << endl;
         cout << " 4 - Afficher la liste des vols" << endl;
         cout << " 5 - Quitter et sauvegarder" << endl;
-        cout << " 6 - Quitter sans sauvegarder." << endl << endl;
         cout << " Saissisez votre choix : ";
         cin >> choix;
         cout << endl;

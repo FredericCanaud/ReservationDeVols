@@ -10,6 +10,7 @@ class Interface {
 public:
     static int menuPrincipal();
     static int menuPassager();
+    static int menuConnexion();
     static int menuAdministrateur();
 };
 
