@@ -14,6 +14,7 @@ string s = ";";
 list<Passager*> passagers;
 list<Vol*> vols;
 list<Reservation*> reservations;
+list<Destination*> destinations;
 Administrateur* admin;
 Passager* utilisateur;
 
@@ -27,6 +28,7 @@ int main()
     vols = Vol::load("../sauvegarde/vols.txt");
     passagers = Passager::load("../sauvegarde/passagers.txt");
     reservations = Reservation::load("../sauvegarde/reservations.txt");
+    destinations = Destination::load("../sauvegarde/destinations.txt");
 
 
     cout << " Programme Reservation de vols" << endl << endl;

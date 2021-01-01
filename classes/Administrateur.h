@@ -13,7 +13,9 @@ public:
     Administrateur();
     Administrateur(string, string);
 
+    // action admin
     void connexion();
+    void
 };
 
 
