@@ -1,3 +1,6 @@
+// CAMPREDON Thomas
+// CANAUD Frédéric
+
 #include <iostream>
 #include<list>
 #include <string>
@@ -63,10 +66,13 @@ int main()
                         case 6:
                             system("CLS");
                             break;
+                        case 7:
+                            system("CLS");
+                            break;
                         default:
                             break;
                     }
-                } while (choix2 != 6);
+                } while (choix2 != 7);
                 break;
             }
             case 2: {
@@ -98,17 +104,55 @@ int main()
                                     case 6:
                                         system("CLS");
                                         break;
+                                    case 7:
+                                        system("CLS");
+                                        break;
                                     default:
                                         break;
                                 }
-                            } while (choix2 != 6);
+                            } while (choix2 != 7);
                             break;
                         case 2:
                             admin->connexion();
-                            choix2 = Interface::menuAdministrateur();
-                            do{
 
-                            }while (choix2 != 5);
+                            do {
+                                choix2 = Interface::menuAdministrateur();
+                                switch (choix2) {
+                                    case 1:
+                                        system("CLS");
+                                    break;
+                                    case 2:
+                                        system("CLS");
+                                    break;
+                                    case 3:
+                                        system("CLS");
+                                    break;
+                                    case 4:
+                                        system("CLS");
+                                    break;
+                                    case 5:
+                                        system("CLS");
+                                    break;
+                                    case 6:
+                                        system("CLS");
+                                    break;
+                                    case 7:
+                                        system("CLS");
+                                    break;
+                                    case 8:
+                                        system("CLS");
+                                        break;
+                                    case 9:
+                                        system("CLS");
+                                        break;
+                                    case 10:
+
+                                        system("CLS");
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }while (choix2 != 10);
                     }
                 }while (choix != 3);
                 choix2 = 0;
@@ -132,4 +176,5 @@ int main()
     Passager::save(passagers, "../sauvegarde/passagers.txt");
     Vol::save(vols, "../sauvegarde/vols.txt");
     Reservation::save(reservations, "../sauvegarde/reservations.txt");
+    Destination::save(destinations, "../sauvegarde/destinations.txt");
 }

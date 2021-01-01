@@ -15,7 +15,7 @@ public:
 
     // action admin
     void connexion();
-    void
+
 };
 
 

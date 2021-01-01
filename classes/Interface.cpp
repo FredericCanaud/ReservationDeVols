@@ -49,11 +49,12 @@ int Interface::menuPassager() {
         cout << " 2 - Afficher la liste de mes reservations" << endl;
         cout << " 4 - Confirmer une reservation" << endl;
         cout << " 5 - Annuler une reservation" << endl;
-        cout << " 6 - Deconnexion" << endl << endl;
+        cout << " 6 - Vérifier l'existence d'une réservation" << endl;
+        cout << " 7 - Deconnexion" << endl << endl;
         cout << " Saissisez votre choix : ";
         cin >> choix;
         cout << endl;
-    } while (choix <= 0 || choix >= 7);
+    } while (choix <= 0 || choix >= 8);
     return choix;
 }
 
@@ -68,10 +69,15 @@ int Interface::menuAdministrateur() {
         cout << " 2 - Modifier heure d'un vol" << endl;
         cout << " 3 - Ajouter un vol" << endl;
         cout << " 4 - Afficher la liste des vols" << endl;
-        cout << " 5 - Quitter et sauvegarder" << endl;
+        cout << " 5 - Afficher la liste des passagers d'un vol" << endl;
+        cout << " 6 - Vérifier l'existence d'un vol" << endl;
+        cout << " 7 - Ajouter un passager" << endl;
+        cout << " 8 - Ajouter une reservation" << endl;
+        cout << " 9 - Ajouter une destination" << endl;
+        cout << " 10 - Quitter et sauvegarder" << endl;
         cout << " Saissisez votre choix : ";
         cin >> choix;
         cout << endl;
-    } while (choix != 5);
+    } while (choix > 0 && choix < 11);
     return choix;
 }
