@@ -48,12 +48,6 @@ const Date Vol::getDate() const {
     return date;
 }
 
-Vol Vol::ajouterVol(int numero, int nombrePlacesMaximal, float prix) {
-    Vol vol = Vol(numero, nombrePlacesMaximal, prix);
-    vol.destination = destination.saisirDestination();
-    vol.date = date.saisirDate();
-    return vol;
-}
 
 bool Vol::recherche(int numeroVol) const {
     list<Vol*>::iterator it ;
@@ -84,11 +78,23 @@ void Vol::afficher() const {
 }
 
 
+void Vol::ajouterPassager(Passager* passager){
+    this->passagersVol.push_front(passager);
+}
+
+
 //string qui contient les informations à sauvegarder
 string Vol::toSave(){
     string result = "";
 
     result += to_string(this->getNumero()) + s + to_string(this->getNombrePlacesMaximal()) + s + to_string(this->getPrix()) + this->getDestination().toString() + s + this->getDate().toString();
+
+    // itérateur sur la liste de passager du vol
+    list<Passager*>::iterator it;
+
+    for (it = this->passagersVol.begin() ; it != passagersVol.end() ; it++){
+        result += s + (*it)->getIdentifiant();
+    }
 
     return result;
 }
@@ -155,6 +161,18 @@ list<Vol*> Vol::load(string nomFichier){
 
         // création du vol
         Vol *vol = new Vol(numero, nbPlace, prix, destination, date);
+
+        // pour chaque identifiant de passager
+        for (itv = itv+10 ; itv != ligne.end() ; itv++){
+            Passager* passager = Passager::recherche(*itv);
+            // si le passager exisite
+            if (nullptr != passager){
+                // on ajoute le passager au vol
+                vol->ajouterPassager(passager);
+            }else{
+                cout << "Erreur de chargement des passagers du vol numero " + to_string(numero) << endl;
+            }
+        }
 
         vols.push_front(vol);
     }

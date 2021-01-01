@@ -46,7 +46,7 @@ int Interface::menuPassager() {
         cout << " Voici les differentes operations possibles : " << endl;
         cout << " 1 - Reserver un vol" << endl;
         cout << " 2 - Afficher la liste des vols" << endl;
-        cout << " 2 - Afficher la liste de mes reservations" << endl;
+        cout << " 3 - Afficher la liste de mes reservations" << endl;
         cout << " 4 - Confirmer une reservation" << endl;
         cout << " 5 - Annuler une reservation" << endl;
         cout << " 6 - Vérifier l'existence d'une réservation" << endl;
@@ -78,6 +78,6 @@ int Interface::menuAdministrateur() {
         cout << " Saissisez votre choix : ";
         cin >> choix;
         cout << endl;
-    } while (choix > 0 && choix < 11);
+    } while (choix < 1 && choix > 10);
     return choix;
 }

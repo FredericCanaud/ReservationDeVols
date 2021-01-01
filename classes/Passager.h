@@ -6,6 +6,7 @@
 #define RESERVATIONDEVOLS_PASSAGER_H
 
 #include "Personne.h"
+#include "Reservation.h"
 #include "manipulateurFichier.h"
 #include <string>
 #include <vector>
@@ -31,8 +32,11 @@ public:
 
     // actions utilisateurs
     void reserverVol();
+    // afficher vols //
     void confirmerReservation();
     void annulerReservation();
+    void afficherReservations();
+    void existReservation();
     static Passager inscription();
     static Passager* connexion();
 
@@ -58,6 +62,8 @@ public:
     	return this->numeroPasseport;
     }
 
+    static Passager* recherche(string identifiant);
+
     string titreString(){
     	switch(this->titre){
 			case Titre::Monsieur:
@@ -73,8 +79,10 @@ public:
     	return "Monsieur";
     }
 };
+
 extern string s;  // séparateur pour les sauvegardes
 extern list<Passager*> passagers;
+extern list<Reservation*> reservations;
 extern Passager* utilisateur;
 
 #endif //RESERVATIONDEVOLS_PASSAGER_H

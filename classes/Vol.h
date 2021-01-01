@@ -9,6 +9,7 @@
 #include "Destination.h"
 #include "Date.h"
 #include "manipulateurFichier.h"
+#include "Passager.h"
 #include <list>
 
 
@@ -24,10 +25,10 @@ public:
 
     // actions utilisateur
     bool recherche(int numeroVol) const;
-    Vol ajouterVol(int numero, int nombrePlacesMaximal, float prix);
     static void afficherVols();
 
     void afficher() const;
+    void ajouterPassager(Passager* passager);
 
     // retourne un string qui servira de sauvegarde
     string toSave() override;
@@ -53,12 +54,13 @@ private:
     float prix;
     Destination destination;
     Date date;
-
+    list<Passager*> passagersVol;
 
 };
 
 // variables globales
 extern string s;
 extern list<Vol*> vols;
+extern list<Passager*> passagers;
 
 #endif //RESERVATIONDEVOLS_VOL_H

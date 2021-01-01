@@ -30,7 +30,84 @@ void Administrateur::connexion() {
         cin >> motDePasseSaisi;
     }
 
-    cout << "\nconnected !\n" <<endl<<endl;
+    cout << "\nConnected !\n" <<endl<<endl;
 }
+
+///////////////////////////
+/// ACTION ADMIN
+///////////////////////////
+
+void Administrateur::modifierDateVol(){
+
+
+}
+
+void Administrateur::modifierHeureVol(){
+
+
+}
+
+void Administrateur::ajouterVol(){
+
+
+}
+
+void Administrateur::afficherVols(){
+
+
+}
+
+void Administrateur::afficherPassagersVol(){
+
+
+}
+
+void Administrateur::existVol(){
+
+
+}
+
+void Administrateur::ajouterPassager(){
+
+
+}
+
+void Administrateur::ajouterReservation(){
+
+
+}
+
+void Administrateur::ajouterDestination(){
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -24,18 +24,20 @@ Passager::Passager(string identifiant, string motDePasse, string nom, string pre
     this->numeroPasseport = numeroPasseport;
 }
 
-void Passager::reserverVol() {
+Passager* recherche(string identifiant){
+    list<Passager*>::iterator it;
 
+    // on parcours tous les passagers existant
+    for (it = passagers.begin() ; it != passagers.end() ; it++){
+        // si l'identifiant correspond
+        if ((*it)->getIdentifiant() == identifiant){
+            return (*it);  // on retourne l'adresse du passager
+        }
+    }
+
+    // si on a rien trouver
+    return nullptr;
 }
-
-void Passager::confirmerReservation() {
-
-}
-
-void Passager::annulerReservation() {
-
-}
-
 
 // inscription à l'aéroport
 Passager Passager::inscription() {
@@ -229,6 +231,22 @@ list<Passager*> Passager::load(string nomFichier){
 	return passagers;
 }
 
+
+////////////////////////////////
+/// ACTION UTILISATEUR
+///////////////////////////////
+
+void Passager::reserverVol() {
+
+}
+
+void Passager::confirmerReservation() {
+
+}
+
+void Passager::annulerReservation() {
+
+}
 
 
 
