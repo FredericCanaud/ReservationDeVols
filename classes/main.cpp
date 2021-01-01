@@ -1,6 +1,7 @@
 #include <iostream>
 #include<list>
 #include <string>
+#include "Personne.h"
 #include "Passager.h"
 #include "Interface.h"
 #include "Vol.h"
@@ -22,16 +23,10 @@ int main()
     int choix, choix2;
     admin = new Administrateur("admin", "lejavadabord");
 
-    // chargement des
+    // chargement des morceaux
     vols = Vol::load("../sauvegarde/vols.txt");
     passagers = Passager::load("../sauvegarde/passagers.txt");
     reservations = Reservation::load("../sauvegarde/reservations.txt");
-
-
-    list<Passager*>::iterator it = passagers.begin();
-    cout << (*it)->toSave()<<endl<<endl;
-    it++;
-    cout << (*it)->toSave()<<endl<<endl;
 
 
     cout << " Programme Reservation de vols" << endl << endl;
@@ -42,11 +37,12 @@ int main()
             case 1: {
                 Passager p = Passager::inscription(); //renvoie vers la page pour l'inscription
                 passagers.push_back(&p); // ajout du passager à la liste de passagers
+                utilisateur = &p;
                 do {
                     choix2 = Interface::menuPassager(); // renvoie vers le menu passager
                     switch (choix2) {
                         case 1:
-                            p.reserverVol();
+                            utilisateur->reserverVol();
                             system("CLS");
                             break;
                         case 2:
@@ -76,18 +72,45 @@ int main()
                     choix = Interface::menuConnexion();
                     switch (choix) {
                         case 1:
+                            utilisateur = Passager::connexion();
+                            do {
+                                choix2 = Interface::menuPassager(); // renvoie vers le menu passager
+                                switch (choix2) {
+                                    case 1:
+                                        utilisateur->reserverVol();
+                                        system("CLS");
+                                        break;
+                                    case 2:
+                                        //Vol::afficherVols(vols);
+                                        system("CLS");
+                                        break;
+                                    case 3:
+                                        system("CLS");
+                                        break;
+                                    case 4:
+                                        system("CLS");
+                                        break;
+                                    case 5:
+                                        system("CLS");
+                                        break;
+                                    case 6:
+                                        system("CLS");
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            } while (choix2 != 6);
+                            break;
+                        case 2:
                             admin->connexion();
                             choix2 = Interface::menuAdministrateur();
                             do{
 
                             }while (choix2 != 5);
-                            break;
-                        case 2:
-                            utilisateur = Passager::connexion();
                     }
                 }while (choix != 3);
-
-
+                choix2 = 0;
+                choix = 0;
                 system("cls");
                 break;
             }

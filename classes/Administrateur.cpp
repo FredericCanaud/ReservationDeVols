@@ -30,7 +30,7 @@ void Administrateur::connexion() {
         cin >> motDePasseSaisi;
     }
 
-    cout << "connected " <<endl<<endl;
+    cout << "\nconnected !\n" <<endl<<endl;
 }
 
 

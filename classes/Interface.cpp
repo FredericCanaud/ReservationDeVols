@@ -72,6 +72,6 @@ int Interface::menuAdministrateur() {
         cout << " Saissisez votre choix : ";
         cin >> choix;
         cout << endl;
-    } while (!(choix == 5 || choix == 6));
+    } while (choix != 5);
     return choix;
 }

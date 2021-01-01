@@ -109,15 +109,16 @@ Passager* Passager::connexion() {
     bool correct = false;
     Passager* p;
 
+
     string identifiantSaisi, motDePasseSaisi;
     cout <<" Entrez votre identifiant : " << endl;
     cin >> identifiantSaisi;
     cout <<" Entrez votre mot de passe : " << endl;
     cin >> motDePasseSaisi;
 
+
     // tant que le mot de passe n'est pas correct
     while(!correct){
-
         // itérateur sur la liste de passager
         list<Passager*>::iterator it;
 

@@ -73,7 +73,7 @@ public:
     	return "Monsieur";
     }
 };
-extern string s;
+extern string s;  // séparateur pour les sauvegardes
 extern list<Passager*> passagers;
 extern Passager* utilisateur;
 
