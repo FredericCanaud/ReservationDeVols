@@ -47,6 +47,34 @@ int Date::getAnnee() const {
     return annee;
 }
 
+void Date::setHeure(int heure) {
+    this->heure = heure;
+}
+
+void Date::setMinute(int minute) {
+    this->minute = minute;
+}
+
+void Date::setJour(int jour) {
+    this->jour = jour;
+}
+
+void Date::setMois(int mois) {
+    this->mois = mois;
+}
+
+void Date::setAnnee(int annee) {
+    this->annee = annee;
+}
+
+string Date::getHoraire(){
+    return to_string(this->heure) + " : " + to_string(this->minute);
+}
+
+string Date::getTempo(){
+    return to_string(this->jour) + "/" + to_string(this->mois) + "/" + to_string(this->annee);
+}
+
 Date Date::saisirDate() {
     int jourSaisi, moisSaisi, anneeSaisie, heureSaisie, minuteSaisie;
     cout<< " Entrez le jour du vol : " << endl;

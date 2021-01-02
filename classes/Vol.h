@@ -24,7 +24,7 @@ public:
     Vol(int numero, int nombrePlacesMaximal, float prix, Destination destination, Date date);
 
     // actions utilisateur
-    bool recherche(int numeroVol) const;
+    static bool existVol(int numeroVol);
     static void afficherVols();
 
     void afficher() const;
@@ -44,9 +44,11 @@ public:
 
     float getPrix() const;
 
-    const Destination getDestination() const;
+    const Destination* getDestination() const;
 
-    const Date getDate() const;
+    const Date* getDate() const;
+
+    static Vol* getVol(int numeroVol);
 
 private:
     int numero;

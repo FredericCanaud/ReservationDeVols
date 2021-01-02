@@ -40,16 +40,16 @@ float Vol::getPrix() const {
     return prix;
 }
 
-const Destination Vol::getDestination() const {
-    return destination;
+const Destination* Vol::getDestination() const {
+    return &destination;
 }
 
-const Date Vol::getDate() const {
-    return date;
+const Date* Vol::getDate() const {
+    return &this->date;
 }
 
 
-bool Vol::recherche(int numeroVol) const {
+bool Vol::existVol(int numeroVol)  {
     list<Vol*>::iterator it ;
     for(it = vols.begin(); it != vols.end() ; it++){
         if((*it)->getNumero() == numeroVol){
@@ -57,6 +57,17 @@ bool Vol::recherche(int numeroVol) const {
         }
     }
     return false;
+}
+
+Vol* Vol::getVol(int numeroVol){
+    list<Vol*>::iterator it;
+
+    for (it = vols.begin() ; it != vols.end() ; it++){
+        if ((*it)->getNumero() == numeroVol){
+            return (*it);
+        }
+    }
+    return nullptr;
 }
 
 void Vol::afficherVols(){

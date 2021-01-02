@@ -14,6 +14,12 @@ Administrateur::Administrateur(string identifiant, string motDePasse) : Personne
 
 }
 
+
+///////////////////////////
+/// ACTION ADMIN
+///////////////////////////
+
+
 void Administrateur::connexion() {
     string identifiantSaisi, motDePasseSaisi;
     cout <<" Entrez votre identifiant : " << endl;
@@ -33,18 +39,72 @@ void Administrateur::connexion() {
     cout << "\nConnected !\n" <<endl<<endl;
 }
 
-///////////////////////////
-/// ACTION ADMIN
-///////////////////////////
 
 void Administrateur::modifierDateVol(){
+    int numeroVol;
+    do{
+        cout << "Saisissez le numero du vol :";
+        cin >> numeroVol;
+    }while(!Vol::existVol(numeroVol));
+
+    Vol* vol = Vol::getVol(numeroVol);
+
+    cout << "Date actuel : " << vol->getDate()->getTempo() << endl;
 
 
+    int jour, mois, annee;
+
+    do{
+        do{
+            cout << "Saisir nouveau jour : ";
+            cin >> jour;
+        }while (jour < 0 || jour > 31);
+
+        do{
+            cout << "Saisir nouveau mois :";
+            cin >>mois;
+        }while(mois < 0 || mois > 12);
+
+        do{
+            cout << "Saisir nouvelle année :";
+            cin >>annee;
+        }while(annee < 2021);
+    }while (!Date::controlerDate(jour, mois, annee));
+
+    vol->getDate()->setJour(jour);
+    vol->getDate()->setMois(mois);
+    vol->getDate()->setAnnee(annee);
+
+    cout << "modification effectuées";
 }
 
 void Administrateur::modifierHeureVol(){
+    int numeroVol;
+    do{
+        cout << "Saisissez le numero du vol :";
+        cin >> numeroVol;
+    }while(!Vol::existVol(numeroVol));
+
+    Vol* vol = Vol::getVol(numeroVol);
+
+    cout << "Horaire actuel : " << vol->getDate()->getHoraire();
+
+    int heure, minute;
+    do{
+        cout << "Saisir nouvelle heure : ";
+        cin >> heure;
+    }while (heure < 0 || heure > 24);
+
+    do{
+        cout << "Saisir nouvelles minutes :";
+        cin >>minute;
+    }while(minute < 0 || minute > 59);
 
 
+    vol->getDate()->setHeure(heure);
+    vol->getDate()->setMinute(minute);
+
+    cout << "Modification effectuées" << endl;
 }
 
 void Administrateur::ajouterVol(){

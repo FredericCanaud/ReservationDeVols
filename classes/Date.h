@@ -27,6 +27,21 @@ public:
 
     int getAnnee() const;
 
+    string getHoraire() const;
+    string getTempo() const;
+
+    void setHeure(int heure) const;
+
+    void setMinute(int minute) const;
+
+    void setJour(int jour) const;
+
+    void setMois(int mois) const;
+
+    void setAnnee(int annee)const ;
+
+    static bool controlerDate(int jour, int moisSaisi, int annee);
+
 private:
     int heure;
     int minute;
@@ -34,7 +49,6 @@ private:
     int mois;
     int annee;
 
-    static bool controlerDate(int jour, int moisSaisi, int annee);
 };
 
 
