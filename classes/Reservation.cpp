@@ -44,6 +44,17 @@ bool Reservation::existNumReservation(int numero){
     return false;
 }
 
+Reservation* Reservation::getReservation(int numeroReservation){
+    list<Reservation*>::iterator it;
+
+    for (it = reservations.begin() ; it != reservations.end() ; it++){
+        if ((*it)->getNumeroReservation() == numeroReservation){
+            return (*it);
+        }
+    }
+    return nullptr;
+}
+
 void Reservation::confirmerReservation(){
     this->confirmation = true;
 }
@@ -51,7 +62,7 @@ void Reservation::confirmerReservation(){
 string Reservation::toSave(){
     string result = "";
 
-    result += to_string(this->getNumeroReservation()) + s + to_string(this->getNumeroReservation()) + s + to_string(this->getNumeroVol());
+    result += to_string(this->getNumeroReservation()) + s + to_string(this->getNumeroPasseport()) + s + to_string(this->getNumeroVol());
 
     return result;
 }

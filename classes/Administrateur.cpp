@@ -158,7 +158,7 @@ void Administrateur::afficherPassagersVol(){
 
     Vol* vol = Vol::getVol(numeroVol);
 
-    cout << "Passagers du vol numero " << vol->getNumero() << endl;
+    cout << "Passagers du vol numero " << vol->getNumero() << " :" << endl;
 
     if (!vol->getPassagersVol().empty()){
         list<Passager*>::iterator it;
@@ -251,11 +251,11 @@ void Administrateur::ajouterReservation(){
     int numeroReservation, numeroPasseport, numeroVol;
 
     do{
-        Helper::saisirEntier(numeroReservation, 1, -1, "Saisissez le numero pour la reservation:");
+        Helper::saisirEntier(numeroReservation, 1, -1, "Saisissez le numero pour la reservation :");
     }while(Reservation::existNumReservation(numeroReservation));
 
     do{
-        Helper::saisirEntier(numeroPasseport, 0, -1, "Saisissez le numero du passeport:");
+        Helper::saisirEntier(numeroPasseport, 0, -1, "Saisissez le numero du passeport :");
     }while(!Passager::existNumPasseport(numeroPasseport));
 
     do{
@@ -263,6 +263,9 @@ void Administrateur::ajouterReservation(){
     }while(!Vol::existNumero(numeroVol));
 
     reservations.push_front(new Reservation(numeroReservation, numeroPasseport, numeroVol));
+
+    Vol* vol = Vol::getVol(numeroVol);
+    vol->ajouterPassager(Passager::getPassagerByPasseport(numeroPasseport));
 
     Reservation::save(reservations, "../sauvegarde/reservations.txt");
 

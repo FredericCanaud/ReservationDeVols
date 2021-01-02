@@ -39,6 +39,17 @@ Passager* Passager::recherche(string identifiant){
     return nullptr;
 }
 
+Passager* Passager::getPassagerByPasseport(int numPasseport){
+    list<Passager*>::iterator it;
+
+    for (it = passagers.begin() ; it != passagers.end() ; it++){
+        if ((*it)->getNumeroPasseport() == numPasseport){
+            return (*it);
+        }
+    }
+    return nullptr;
+}
+
 bool Passager::existNumPasseport(int numero){
     list<Passager*>::iterator it;
 
@@ -251,6 +262,17 @@ void Passager::reserverVol() {
 }
 
 void Passager::confirmerReservation() {
+    int numReservation;
+
+    do{
+        Helper::saisirEntier(numReservation, 0, -1, "Saisissez le numero de la reservation a valide :");
+    }while(!Reservation::existNumReservation(numReservation));
+
+    Reservation* reservation = Reservation::getReservation(numReservation);
+
+    reservation->confirmerReservation();
+
+    cout << "Reservation numero " + to_string(numReservation) + " cofirmee\n" << endl;
 
 }
 

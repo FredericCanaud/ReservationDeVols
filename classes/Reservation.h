@@ -41,6 +41,8 @@ public:
 
     static bool existNumReservation(int numero);
 
+    static Reservation* getReservation(int numeroReservation);
+
 private:
     int numeroReservation;
     int numeroPasseport;

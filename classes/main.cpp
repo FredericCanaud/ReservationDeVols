@@ -99,7 +99,6 @@ int main()
                                         break;
                                     case 6:
                                         utilisateur->existReservation();
-                                        system("CLS");
                                         break;
                                     case 7:
                                         cout << "\nDeconnexion" << endl;
@@ -153,12 +152,10 @@ int main()
                 }while (choix != 3);
                 choix2 = 0;
                 choix = 0;
-                system("cls");
                 break;
             }
             case 3: {
             	cout << "\nboubye";
-                system("cls");
                 break;
             }
             default: {

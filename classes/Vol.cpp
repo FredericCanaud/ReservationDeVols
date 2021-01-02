@@ -92,7 +92,6 @@ void Vol::ajouterPassager(Passager* passager){
 }
 
 bool Vol::existNumero(int numero){
-    cout << "taille vols :" << vols.size() << endl;
     if (vols.empty()){
         cout << "Il n'y a pas de vols\n";
         return false;

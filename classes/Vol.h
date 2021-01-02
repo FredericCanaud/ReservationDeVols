@@ -11,6 +11,7 @@
 #include "manipulateurFichier.h"
 #include "Passager.h"
 #include <list>
+#include <string>
 
 
 
