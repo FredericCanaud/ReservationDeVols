@@ -39,6 +39,8 @@ public:
 
     bool isConfirmer() const;
 
+    static bool existNumReservation(int numero);
+
 private:
     int numeroReservation;
     int numeroPasseport;

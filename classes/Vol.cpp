@@ -40,24 +40,14 @@ float Vol::getPrix() const {
     return prix;
 }
 
-const Destination* Vol::getDestination() const {
+Destination* Vol::getDestination() {
     return &destination;
 }
 
-const Date* Vol::getDate() const {
+Date* Vol::getDate() {
     return &this->date;
 }
 
-
-bool Vol::existVol(int numeroVol)  {
-    list<Vol*>::iterator it ;
-    for(it = vols.begin(); it != vols.end() ; it++){
-        if((*it)->getNumero() == numeroVol){
-            return true;
-        }
-    }
-    return false;
-}
 
 Vol* Vol::getVol(int numeroVol){
     list<Vol*>::iterator it;
@@ -68,6 +58,10 @@ Vol* Vol::getVol(int numeroVol){
         }
     }
     return nullptr;
+}
+
+list<Passager*> Vol::getPassagersVol(){
+    return this->passagersVol;
 }
 
 void Vol::afficherVols(){
@@ -82,23 +76,43 @@ void Vol::afficherVols(){
 void Vol::afficher() const {
     cout << " Vol numero " << numero << " :" << endl;
     cout << " De " << destination.getVilleDepart() << " en destination de " << destination.getVilleArrivee() << endl;
-    cout << setw(2) << setfill('0') << " Heure de départ : " << date.getHeure() << ":" << date.getMinute() << endl;
-    cout << setw(2) << setfill('0') << " Jour de départ : " << date.getJour() << "/" << date.getMois() << "/" << date.getAnnee() << endl;
-    cout << setprecision(2) << " Prix : " << prix << "€" << endl;
+    cout << setw(2) << setfill('0') << " Heure de depart : " << date.getHeure() << ":" << date.getMinute() << endl;
+    cout << setw(2) << setfill('0') << " Jour de depart : " << date.getJour() << "/" << date.getMois() << "/" << date.getAnnee() << endl;
+    cout << setprecision(2) << " Prix : " << to_string(prix) << " euros" << endl;
     cout << "Nombre de places maximal : " << nombrePlacesMaximal << endl << endl;
 }
 
 
 void Vol::ajouterPassager(Passager* passager){
-    this->passagersVol.push_front(passager);
+    if (this->passagersVol.size() < this->nombrePlacesMaximal){
+        this->passagersVol.push_front(passager);
+    }else{
+        cout << "Il n'y a plus de place pour ce vol" << endl;
+    }
 }
 
+bool Vol::existNumero(int numero){
+    cout << "taille vols :" << vols.size() << endl;
+    if (vols.empty()){
+        cout << "Il n'y a pas de vols\n";
+        return false;
+    }
+
+    list<Vol*>::iterator it;
+
+    for (it = vols.begin() ; it != vols.end() ; it++){
+        if ((*it)->getNumero() == numero){
+            return true;
+        }
+    }
+    return false;
+}
 
 //string qui contient les informations à sauvegarder
 string Vol::toSave(){
     string result = "";
 
-    result += to_string(this->getNumero()) + s + to_string(this->getNombrePlacesMaximal()) + s + to_string(this->getPrix()) + this->getDestination().toString() + s + this->getDate().toString();
+    result += to_string(this->getNumero()) + s + to_string(this->getNombrePlacesMaximal()) + s + to_string(this->getPrix()) + s + this->getDestination()->toString() + s + this->getDate()->toString();
 
     // itérateur sur la liste de passager du vol
     list<Passager*>::iterator it;
@@ -158,7 +172,7 @@ list<Vol*> Vol::load(string nomFichier){
         // récupération des champs
         int numero = Helper::to_int(*itv);
         int nbPlace = Helper::to_int(*(itv+1));
-        int prix = Helper::to_int(*(itv+2));
+        float prix = ::atof((*(itv+2)).c_str());
         string villeDep = *(itv+3);
         string villeArr = *(itv+4);
         int j = Helper::to_int(*(itv+5));
@@ -173,19 +187,22 @@ list<Vol*> Vol::load(string nomFichier){
         // création du vol
         Vol *vol = new Vol(numero, nbPlace, prix, destination, date);
 
-        // pour chaque identifiant de passager
-        for (itv = itv+10 ; itv != ligne.end() ; itv++){
-            Passager* passager = Passager::recherche(*itv);
-            // si le passager exisite
-            if (nullptr != passager){
-                // on ajoute le passager au vol
-                vol->ajouterPassager(passager);
-            }else{
-                cout << "Erreur de chargement des passagers du vol numero " + to_string(numero) << endl;
+        if (ligne.size() > 9){
+            // pour chaque identifiant de passager
+            for (itv = (itv+10) ; itv != ligne.end() ; itv++){
+                Passager* passager = Passager::recherche((*itv));
+                // si le passager exisite
+                if (nullptr != passager){
+                    // on ajoute le passager au vol
+                    vol->ajouterPassager(passager);
+                }else{
+                    cout << "Erreur de chargement des passagers du vol numero " + to_string(numero) << endl;
+                }
             }
+
+            vols.push_front(vol);
         }
 
-        vols.push_front(vol);
     }
 
     return vols;

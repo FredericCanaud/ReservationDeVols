@@ -24,11 +24,12 @@ public:
     Vol(int numero, int nombrePlacesMaximal, float prix, Destination destination, Date date);
 
     // actions utilisateur
-    static bool existVol(int numeroVol);
     static void afficherVols();
+
 
     void afficher() const;
     void ajouterPassager(Passager* passager);
+    static bool existNumero(int numero);
 
     // retourne un string qui servira de sauvegarde
     string toSave() override;
@@ -44,9 +45,11 @@ public:
 
     float getPrix() const;
 
-    const Destination* getDestination() const;
+    list<Passager*> getPassagersVol();
 
-    const Date* getDate() const;
+    Destination* getDestination() ;
+
+    Date* getDate() ;
 
     static Vol* getVol(int numeroVol);
 
@@ -63,6 +66,6 @@ private:
 // variables globales
 extern string s;
 extern list<Vol*> vols;
-extern list<Passager*> passagers;
+
 
 #endif //RESERVATIONDEVOLS_VOL_H

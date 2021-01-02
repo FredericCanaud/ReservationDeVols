@@ -62,7 +62,10 @@ public:
     	return this->numeroPasseport;
     }
 
+    string toString();
+
     static Passager* recherche(string identifiant);
+    static bool existNumPasseport(int numero);
 
     string titreString(){
     	switch(this->titre){

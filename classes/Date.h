@@ -13,7 +13,7 @@ class Date {
 public:
     Date();
     Date(int jour, int mois, int annee, int heure, int minute);
-    Date saisirDate();
+    static Date saisirDate();
 
     string toString() const;
 
@@ -30,15 +30,15 @@ public:
     string getHoraire() const;
     string getTempo() const;
 
-    void setHeure(int heure) const;
+    void setHeure(int heure) ;
 
-    void setMinute(int minute) const;
+    void setMinute(int minute) ;
 
-    void setJour(int jour) const;
+    void setJour(int jour) ;
 
-    void setMois(int mois) const;
+    void setMois(int mois) ;
 
-    void setAnnee(int annee)const ;
+    void setAnnee(int annee) ;
 
     static bool controlerDate(int jour, int moisSaisi, int annee);
 

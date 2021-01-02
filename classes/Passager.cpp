@@ -24,7 +24,7 @@ Passager::Passager(string identifiant, string motDePasse, string nom, string pre
     this->numeroPasseport = numeroPasseport;
 }
 
-Passager* recherche(string identifiant){
+Passager* Passager::recherche(string identifiant){
     list<Passager*>::iterator it;
 
     // on parcours tous les passagers existant
@@ -37,6 +37,21 @@ Passager* recherche(string identifiant){
 
     // si on a rien trouver
     return nullptr;
+}
+
+bool Passager::existNumPasseport(int numero){
+    list<Passager*>::iterator it;
+
+    for (it = passagers.begin() ; it != passagers.end() ; it++){
+        if ((*it)->getNumeroPasseport() == numero){
+            return true;
+        }
+    }
+    return false;
+}
+
+string Passager::toString(){
+    return this->nom + " " + this->prenom + " ; " + "passeport numero " + to_string(this->numeroPasseport);
 }
 
 // inscription à l'aéroport
@@ -89,11 +104,6 @@ Passager Passager::inscription() {
     while ((titre != "Monsieur") && (titre != "Madame") && (titre != "Mademoiselle")){
     	cout << " Erreur : Veuillez saisir un titre correct (Monsieur, Madame ou Mademoiselle) : " << endl;
         cin >> titre;
-    }
-
-
-    while(Titre::Monsieur >= m[titre] && Titre::Mademoiselle <= m[titre]){
-
     }
 
     // numerot de passeport
@@ -245,6 +255,14 @@ void Passager::confirmerReservation() {
 }
 
 void Passager::annulerReservation() {
+
+}
+
+void Passager::afficherReservations(){
+
+}
+
+void Passager::existReservation(){
 
 }
 

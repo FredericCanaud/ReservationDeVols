@@ -67,11 +67,11 @@ void Date::setAnnee(int annee) {
     this->annee = annee;
 }
 
-string Date::getHoraire(){
+string Date::getHoraire() const{
     return to_string(this->heure) + " : " + to_string(this->minute);
 }
 
-string Date::getTempo(){
+string Date::getTempo() const{
     return to_string(this->jour) + "/" + to_string(this->mois) + "/" + to_string(this->annee);
 }
 
@@ -110,7 +110,8 @@ Date Date::saisirDate() {
         cin >> minuteSaisie;
     }
 
-    return {minuteSaisie, heureSaisie, jourSaisi, moisSaisi, anneeSaisie};
+    cout << "saisirDate zone\n\n";
+    return Date(jourSaisi, moisSaisi, anneeSaisie, heureSaisie, minuteSaisie);
 }
 
 bool Date::controlerDate(int jourSaisi, int moisSaisi, int anneeSaisie){

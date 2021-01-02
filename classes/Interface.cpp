@@ -14,8 +14,7 @@ int Interface::menuPrincipal() {
         cout << " 1 - S'inscrire" << endl;
         cout << " 2 - Se connecter" << endl;
         cout << " 3 - Quitter l'application" << endl;
-        cout << " Saissisez votre choix :  ";
-        cin >> choix;
+        Helper::saisirEntier(choix, 1, 32, "Saisissez votre choix:");
         cout << endl;
     } while (choix <= 0 || choix >= 4);
     return choix;
@@ -30,8 +29,7 @@ int Interface::menuConnexion() {
         cout << " 1 - Connection passager" << endl;
         cout << " 2 - Connection admin" << endl;
         cout << " 3 - Retour" << endl << endl;
-        cout << " Saissisez votre choix : ";
-        cin >> choix;
+        Helper::saisirEntier(choix, 1, 3, "Saisissez votre choix:");
         cout << endl;
     } while (choix < 1 || choix > 3);
     return choix;
@@ -49,10 +47,9 @@ int Interface::menuPassager() {
         cout << " 3 - Afficher la liste de mes reservations" << endl;
         cout << " 4 - Confirmer une reservation" << endl;
         cout << " 5 - Annuler une reservation" << endl;
-        cout << " 6 - Vérifier l'existence d'une réservation" << endl;
+        cout << " 6 - Vérifier l'existence d'une reservation" << endl;
         cout << " 7 - Deconnexion" << endl << endl;
-        cout << " Saissisez votre choix : ";
-        cin >> choix;
+        Helper::saisirEntier(choix, 1, 7, "Saisissez votre choix:");
         cout << endl;
     } while (choix <= 0 || choix >= 8);
     return choix;
@@ -70,13 +67,12 @@ int Interface::menuAdministrateur() {
         cout << " 3 - Ajouter un vol" << endl;
         cout << " 4 - Afficher la liste des vols" << endl;
         cout << " 5 - Afficher la liste des passagers d'un vol" << endl;
-        cout << " 6 - Vérifier l'existence d'un vol" << endl;
+        cout << " 6 - Verifier l'existence d'un vol" << endl;
         cout << " 7 - Ajouter un passager" << endl;
         cout << " 8 - Ajouter une reservation" << endl;
         cout << " 9 - Ajouter une destination" << endl;
         cout << " 10 - Quitter et sauvegarder" << endl;
-        cout << " Saissisez votre choix : ";
-        cin >> choix;
+        Helper::saisirEntier(choix, 1, 10, "Saisissez votre choix:");
         cout << endl;
     } while (choix < 1 && choix > 10);
     return choix;

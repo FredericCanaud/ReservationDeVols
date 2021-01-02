@@ -5,7 +5,7 @@
 #ifndef RESERVATIONDEVOLS_INTERFACE_H
 #define RESERVATIONDEVOLS_INTERFACE_H
 
-
+#include "helper.h"
 class Interface {
 public:
     static int menuPrincipal();

@@ -48,31 +48,24 @@ int main()
                     switch (choix2) {
                         case 1:
                             utilisateur->reserverVol();
-                            system("CLS");
                             break;
                         case 2:
                             Vol::afficherVols();
-                            system("CLS");
                             break;
                         case 3:
                             utilisateur->afficherReservations();
-                            system("CLS");
                             break;
                         case 4:
                             utilisateur->confirmerReservation();
-                            system("CLS");
                             break;
                         case 5:
                             utilisateur->annulerReservation();
-                            system("CLS");
                             break;
                         case 6:
                             utilisateur->existReservation();
-                            system("CLS");
                             break;
                         case 7:
                             cout << "\nDeconnexion" << endl;
-                            system("CLS");
                             break;
                         default:
                             break;
@@ -91,23 +84,18 @@ int main()
                                 switch (choix2) {
                                     case 1:
                                         utilisateur->reserverVol();
-                                        system("CLS");
                                         break;
                                     case 2:
                                         Vol::afficherVols();
-                                        system("CLS");
                                         break;
                                     case 3:
                                         utilisateur->afficherReservations();
-                                        system("CLS");
                                         break;
                                     case 4:
                                         utilisateur->confirmerReservation();
-                                        system("CLS");
                                         break;
                                     case 5:
                                         utilisateur->annulerReservation();
-                                        system("CLS");
                                         break;
                                     case 6:
                                         utilisateur->existReservation();
@@ -115,7 +103,6 @@ int main()
                                         break;
                                     case 7:
                                         cout << "\nDeconnexion" << endl;
-                                        system("CLS");
                                         break;
                                     default:
                                         break;
@@ -130,43 +117,33 @@ int main()
                                 switch (choix2) {
                                     case 1:
                                         admin->modifierDateVol();
-                                        system("CLS");
                                     break;
                                     case 2:
                                         admin->modifierHeureVol();
-                                        system("CLS");
                                     break;
                                     case 3:
                                         admin->ajouterVol();
-                                        system("CLS");
                                     break;
                                     case 4:
                                         admin->afficherVols();
-                                        system("CLS");
                                     break;
                                     case 5:
                                         admin->afficherPassagersVol();
-                                        system("CLS");
                                     break;
                                     case 6:
                                         admin->existVol();
-                                        system("CLS");
                                     break;
                                     case 7:
                                         admin->ajouterPassager();
-                                        system("CLS");
                                     break;
                                     case 8:
                                         admin->ajouterReservation();
-                                        system("CLS");
                                         break;
                                     case 9:
                                         admin->ajouterDestination();
-                                        system("CLS");
                                         break;
                                     case 10:
                                         cout << "\nExit" << endl;
-                                        system("CLS");
                                         break;
                                     default:
                                         break;

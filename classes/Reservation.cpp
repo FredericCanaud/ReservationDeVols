@@ -33,7 +33,16 @@ bool Reservation::isConfirmer() const {
     return confirmation;
 }
 
+bool Reservation::existNumReservation(int numero){
+    list<Reservation*>::iterator it;
 
+    for (it = reservations.begin() ; it != reservations.end() ; it++){
+        if ((*it)->getNumeroReservation() == numero){
+            return true;
+        }
+    }
+    return false;
+}
 
 void Reservation::confirmerReservation(){
     this->confirmation = true;

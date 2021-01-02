@@ -13,6 +13,8 @@ using namespace std;
 #include "Vol.h"
 #include "Date.h"
 #include "Reservation.h"
+#include "helper.h"
+#include <map>
 
 
 class Administrateur : virtual Personne{
