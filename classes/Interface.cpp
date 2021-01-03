@@ -48,10 +48,11 @@ int Interface::menuPassager() {
         cout << " 4 - Confirmer une reservation" << endl;
         cout << " 5 - Annuler une reservation" << endl;
         cout << " 6 - Verifier l'existence d'une reservation" << endl;
-        cout << " 7 - Deconnexion" << endl << endl;
-        Helper::saisirEntier(choix, 1, 7, "Saisissez votre choix:");
+        cout << " 7 - Verifier l'existence d'un vol" << endl;
+        cout << " 8 - Deconnexion" << endl << endl;
+        Helper::saisirEntier(choix, 1, 8, "Saisissez votre choix:");
         cout << endl;
-    } while (choix <= 0 || choix >= 8);
+    } while (choix <= 0 || choix >= 9);
     return choix;
 }
 

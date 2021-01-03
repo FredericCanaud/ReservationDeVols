@@ -71,12 +71,16 @@ int main()
                             system("PAUSE");
                             break;
                         case 7:
+                            admin->existVol();
+                            system("PAUSE");
+                            break;
+                        case 8:
                             cout << "\nDeconnexion" << endl;
                             break;
                         default:
                             break;
                     }
-                } while (choix2 != 7);
+                } while (choix2 != 8);
                 break;
             }
             case 2: {
@@ -113,12 +117,16 @@ int main()
                                         system("PAUSE");
                                         break;
                                     case 7:
+                                        admin->existVol();
+                                        system("PAUSE");
+                                        break;
+                                    case 8:
                                         cout << "\nDeconnexion" << endl;
                                         break;
                                     default:
                                         break;
                                 }
-                            } while (choix2 != 7);
+                            } while (choix2 != 8);
                             break;
                         case 2:
                             admin->connexion();
