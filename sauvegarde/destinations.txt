@@ -1,3 +1,4 @@
 Paris;Lille
 NewYork;Tokyo
 Pekin;Chicago
+Limoges;Bristol

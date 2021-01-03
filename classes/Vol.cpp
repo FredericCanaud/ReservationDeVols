@@ -189,6 +189,7 @@ list<Vol*> Vol::load(string nomFichier){
         if (ligne.size() > 9){
             // pour chaque identifiant de passager
             for (itv = (itv+10) ; itv != ligne.end() ; itv++){
+                cout << "chargement passager vol";
                 Passager* passager = Passager::recherche((*itv));
                 // si le passager exisite
                 if (nullptr != passager){
@@ -198,10 +199,8 @@ list<Vol*> Vol::load(string nomFichier){
                     cout << "Erreur de chargement des passagers du vol numero " + to_string(numero) << endl;
                 }
             }
-
             vols.push_front(vol);
         }
-
     }
 
     return vols;

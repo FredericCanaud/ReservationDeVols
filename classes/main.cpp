@@ -28,8 +28,8 @@ int main()
     admin = new Administrateur("admin", "lejavadabord");
 
     // chargement des morceaux
-    vols = Vol::load("../sauvegarde/vols.txt");
     passagers = Passager::load("../sauvegarde/passagers.txt");
+    vols = Vol::load("../sauvegarde/vols.txt");
     reservations = Reservation::load("../sauvegarde/reservations.txt");
     destinations = Destination::load("../sauvegarde/destinations.txt");
 
@@ -48,21 +48,27 @@ int main()
                     switch (choix2) {
                         case 1:
                             utilisateur->reserverVol();
+                            system("PAUSE");
                             break;
                         case 2:
                             Vol::afficherVols();
+                            system("PAUSE");
                             break;
                         case 3:
                             utilisateur->afficherReservations();
+                            system("PAUSE");
                             break;
                         case 4:
                             utilisateur->confirmerReservation();
+                            system("PAUSE");
                             break;
                         case 5:
                             utilisateur->annulerReservation();
+                            system("PAUSE");
                             break;
                         case 6:
                             utilisateur->existReservation();
+                            system("PAUSE");
                             break;
                         case 7:
                             cout << "\nDeconnexion" << endl;
@@ -84,21 +90,27 @@ int main()
                                 switch (choix2) {
                                     case 1:
                                         utilisateur->reserverVol();
+                                        system("PAUSE");
                                         break;
                                     case 2:
                                         Vol::afficherVols();
+                                        system("PAUSE");
                                         break;
                                     case 3:
                                         utilisateur->afficherReservations();
+                                        system("PAUSE");
                                         break;
                                     case 4:
                                         utilisateur->confirmerReservation();
+                                        system("PAUSE");
                                         break;
                                     case 5:
                                         utilisateur->annulerReservation();
+                                        system("PAUSE");
                                         break;
                                     case 6:
                                         utilisateur->existReservation();
+                                        system("PAUSE");
                                         break;
                                     case 7:
                                         cout << "\nDeconnexion" << endl;
@@ -116,30 +128,39 @@ int main()
                                 switch (choix2) {
                                     case 1:
                                         admin->modifierDateVol();
-                                    break;
+                                        system("PAUSE");
+                                        break;
                                     case 2:
                                         admin->modifierHeureVol();
-                                    break;
+                                        system("PAUSE");
+                                        break;
                                     case 3:
                                         admin->ajouterVol();
-                                    break;
+                                        system("PAUSE");
+                                        break;
                                     case 4:
                                         admin->afficherVols();
-                                    break;
+                                        system("PAUSE");
+                                        break;
                                     case 5:
                                         admin->afficherPassagersVol();
-                                    break;
+                                        system("PAUSE");
+                                        break;
                                     case 6:
                                         admin->existVol();
-                                    break;
+                                        system("PAUSE");
+                                        break;
                                     case 7:
                                         admin->ajouterPassager();
-                                    break;
+                                        system("PAUSE");
+                                        break;
                                     case 8:
                                         admin->ajouterReservation();
+                                        system("PAUSE");
                                         break;
                                     case 9:
                                         admin->ajouterDestination();
+                                        system("PAUSE");
                                         break;
                                     case 10:
                                         cout << "\nExit" << endl;

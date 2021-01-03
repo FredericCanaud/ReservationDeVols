@@ -273,10 +273,45 @@ list<Passager*> Passager::load(string nomFichier){
 
 void Passager::reserverVol() {
     int numeroVol;
+
     do{
         Helper::saisirEntier(numeroVol, 1, -1, "Saisissez le numero du vol a reserver :");
     }while(!Vol::existNumero(numeroVol));
 
+    Vol* vol = Vol::getVol(numeroVol);
+
+    if (vol->getPassagersVol().size() < vol->getNombrePlacesMaximal()){
+        vol->ajouterPassager(this);
+
+        list<Reservation*>::iterator it = reservations.begin();
+
+        bool numOk = false;
+        int num = (*it)->getNumeroReservation()+1;
+
+        while(!numOk){
+            numOk = true;
+            for (it = reservations.begin() ; it != reservations.end() ; it++){
+                // on cherche un indice pour la reservation
+                if ((*it)->getNumeroReservation() == num){
+                    numOk = false;
+                    numOk +=1;
+                    break;
+                }
+            }
+        }
+
+        Reservation* reservation = new Reservation(num, this->numeroPasseport, numeroVol);
+
+        reservations.push_front(reservation);
+
+        Vol::save(vols, "../sauvegarde/vols.txt");
+
+        Reservation::save(reservations, "../sauvegarde/reservations.txt");
+
+        cout << "Reservation numero " << num << " pour le vol numero " << numeroVol << " enregistree\n" << endl;
+    }else{
+        cout << "Le vol que vous recherchez n'a plus de place\n" << endl;
+    }
 
 }
 
@@ -290,6 +325,8 @@ void Passager::confirmerReservation() {
     Reservation* reservation = Reservation::getReservation(numReservation);
 
     reservation->confirmerReservation();
+
+    Reservation::save(reservations, "../sauvegarde/reservations.txt");
 
     cout << "Reservation numero " + to_string(numReservation) + " confirmee\n" << endl;
 }
@@ -310,6 +347,8 @@ void Passager::annulerReservation() {
     vol->getPassagersVol().remove(passager);
 
     reservations.remove(reservation);
+
+    Reservation::save(reservations, "../sauvegarde/reservations.txt");
 
     cout << "Reservation numero " + to_string(numReservation) + " supprimee\n" << endl;
 }
