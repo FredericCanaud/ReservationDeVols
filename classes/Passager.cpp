@@ -10,6 +10,8 @@
 #include "Passager.h"
 #include "helper.h"
 #include "manipulateurFichier.h"
+
+
 using namespace std;
 
 Passager::Passager() : Personne() {
@@ -22,6 +24,18 @@ Passager::Passager(string identifiant, string motDePasse, string nom, string pre
     this->age = age;
     this->titre = titre;
     this->numeroPasseport = numeroPasseport;
+}
+
+bool Passager::hasReservation(int numReservation){
+    list<Reservation*>::iterator it;
+
+    for (it = reservations.begin() ; it != reservations.end() ; it++){
+        if ((*it)->getNumeroReservation() == numReservation && (*it)->getNumeroPasseport() == this->numeroPasseport){
+            return true;
+        }
+    }
+
+    return false;
 }
 
 Passager* Passager::recherche(string identifiant){
@@ -258,6 +272,11 @@ list<Passager*> Passager::load(string nomFichier){
 ///////////////////////////////
 
 void Passager::reserverVol() {
+    int numeroVol;
+    do{
+        Helper::saisirEntier(numeroVol, 1, -1, "Saisissez le numero du vol a reserver :");
+    }while(!Vol::existNumero(numeroVol));
+
 
 }
 
@@ -266,26 +285,63 @@ void Passager::confirmerReservation() {
 
     do{
         Helper::saisirEntier(numReservation, 0, -1, "Saisissez le numero de la reservation a valide :");
-    }while(!Reservation::existNumReservation(numReservation));
+    }while(!this->hasReservation(numReservation));
 
     Reservation* reservation = Reservation::getReservation(numReservation);
 
     reservation->confirmerReservation();
 
-    cout << "Reservation numero " + to_string(numReservation) + " cofirmee\n" << endl;
-
+    cout << "Reservation numero " + to_string(numReservation) + " confirmee\n" << endl;
 }
 
 void Passager::annulerReservation() {
+    int numReservation;
 
+    do{
+        Helper::saisirEntier(numReservation, 0, -1, "Saisissez le numero de la reservation a annuler :");
+    }while(!this->hasReservation(numReservation));
+
+    Reservation* reservation = Reservation::getReservation(numReservation);
+
+    Vol* vol = Vol::getVol(reservation->getNumeroVol());
+    Passager* passager = Passager::getPassagerByPasseport(reservation->getNumeroPasseport());
+
+    // on retire le passager du vol
+    vol->getPassagersVol().remove(passager);
+
+    reservations.remove(reservation);
+
+    cout << "Reservation numero " + to_string(numReservation) + " supprimee\n" << endl;
 }
 
 void Passager::afficherReservations(){
+    cout << "Liste de vos reservations :\n";
+
+    list<Reservation*>::iterator it;
+    for (it = reservations.begin() ; it != reservations.end() ; it++){
+        if (this->hasReservation((*it)->getNumeroReservation())){
+            cout << "Numero de la reservation : " << to_string((*it)->getNumeroReservation()) + " ; Numero du vol : " << to_string((*it)->getNumeroVol()) << " ; Status : ";
+            if ((*it)->isConfirmer()){
+                cout << "Confirmer" <<endl;
+            }else{
+                cout << "En attente de confirmation" << endl;
+            }
+        }
+    }
+    cout << endl;
 
 }
 
 void Passager::existReservation(){
+    int numReservation;
 
+    Helper::saisirEntier(numReservation, 0, -1, "Saisissez le numero de la reservation a verifier :");
+
+    if (this->hasReservation(numReservation)){
+        cout << "La reservation numero " << numReservation << " existe\n" << endl;
+    }else{
+        cout << "La reservation numero " << numReservation << " n'existe pas\n" << endl;
+    }
 }
 
 

@@ -55,6 +55,10 @@ Reservation* Reservation::getReservation(int numeroReservation){
     return nullptr;
 }
 
+void Reservation::setConfirme(bool valide){
+    this->confirmation = valide;
+}
+
 void Reservation::confirmerReservation(){
     this->confirmation = true;
 }
@@ -63,6 +67,12 @@ string Reservation::toSave(){
     string result = "";
 
     result += to_string(this->getNumeroReservation()) + s + to_string(this->getNumeroPasseport()) + s + to_string(this->getNumeroVol());
+
+    if (this->isConfirmer()){
+        result += s + to_string(1);
+    }else{
+        result += s + to_string(0);
+    }
 
     return result;
 }
@@ -114,9 +124,18 @@ list<Reservation*> Reservation::load(string nomFichier) {
         int numReservation = Helper::to_int(*itv);
         int numPasseport =  Helper::to_int(*(itv+1));
         int numVol = Helper::to_int(*(itv+2));
+        int isValide = Helper::to_int(*(itv+3));
 
+        bool valide;
+        if (isValide == 1){
+            valide = true;
+        }else{
+            valide = false;
+        }
 
         Reservation *reservation = new Reservation(numReservation, numPasseport, numVol);
+
+        reservation->setConfirme(valide);
 
         reservations.push_front(reservation);
     }

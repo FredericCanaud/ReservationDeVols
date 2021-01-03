@@ -5,6 +5,7 @@
 #ifndef RESERVATIONDEVOLS_VOL_H
 #define RESERVATIONDEVOLS_VOL_H
 
+class Passager;
 
 #include "Destination.h"
 #include "Date.h"

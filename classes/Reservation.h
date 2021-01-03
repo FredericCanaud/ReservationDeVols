@@ -43,6 +43,8 @@ public:
 
     static Reservation* getReservation(int numeroReservation);
 
+    void setConfirme(bool valide);
+
 private:
     int numeroReservation;
     int numeroPasseport;

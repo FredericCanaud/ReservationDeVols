@@ -5,7 +5,10 @@
 #ifndef RESERVATIONDEVOLS_PASSAGER_H
 #define RESERVATIONDEVOLS_PASSAGER_H
 
+class Vol;
+
 #include "Personne.h"
+#include "Vol.h"
 #include "Reservation.h"
 #include "manipulateurFichier.h"
 #include <string>
@@ -61,6 +64,8 @@ public:
     int getNumeroPasseport(){
     	return this->numeroPasseport;
     }
+
+    bool hasReservation(int numReservation);
 
 
     string toString();

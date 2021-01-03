@@ -47,7 +47,7 @@ int Interface::menuPassager() {
         cout << " 3 - Afficher la liste de mes reservations" << endl;
         cout << " 4 - Confirmer une reservation" << endl;
         cout << " 5 - Annuler une reservation" << endl;
-        cout << " 6 - Vérifier l'existence d'une reservation" << endl;
+        cout << " 6 - Verifier l'existence d'une reservation" << endl;
         cout << " 7 - Deconnexion" << endl << endl;
         Helper::saisirEntier(choix, 1, 7, "Saisissez votre choix:");
         cout << endl;
